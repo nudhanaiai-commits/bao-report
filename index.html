@@ -272,34 +272,31 @@
   }
   .steps li strong { color: var(--green); }
 
-  /* Tooltips for finance terms */
+  /* Tooltips for finance terms — styled via JS */
   .tip {
     border-bottom: 1.5px dotted var(--brown-light);
     cursor: help;
-    position: relative;
   }
-  .tip:hover::after {
-    content: attr(data-tip);
+  #tip-bubble {
+    display: none;
     position: fixed;
-    top: 50%;
+    bottom: 24px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     background: var(--dark);
     color: var(--white);
-    padding: 16px 20px;
+    padding: 14px 20px;
     border-radius: 12px;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.6;
-    white-space: normal;
-    width: max-content;
-    max-width: 340px;
+    max-width: 360px;
+    width: calc(100vw - 48px);
     z-index: 1000;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     pointer-events: none;
-  }
-  .tip:hover::before {
-    content: none;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
     z-index: 101;
     pointer-events: none;
   }
@@ -405,7 +402,34 @@ function setLang(lang) {
 }
 // Restore saved language
 if (localStorage.getItem('bao-lang') === 'th') setLang('th');
+
+// Tooltip bubble via JS (not CSS pseudo-elements — those break in tables)
+const bubble = document.getElementById('tip-bubble');
+document.addEventListener('mouseover', e => {
+  const tip = e.target.closest('.tip');
+  if (tip && tip.dataset.tip) {
+    bubble.textContent = tip.dataset.tip;
+    bubble.style.display = 'block';
+  }
+});
+document.addEventListener('mouseout', e => {
+  const tip = e.target.closest('.tip');
+  if (tip) bubble.style.display = 'none';
+});
+// Also handle touch for mobile
+document.addEventListener('click', e => {
+  const tip = e.target.closest('.tip');
+  if (tip && tip.dataset.tip) {
+    bubble.textContent = tip.dataset.tip;
+    bubble.style.display = bubble.style.display === 'block' ? 'none' : 'block';
+    e.preventDefault();
+  } else {
+    bubble.style.display = 'none';
+  }
+});
 </script>
+
+<div id="tip-bubble"></div>
 
 <!-- BAO Executive Report v2.0 -->
 <!-- COVER -->
