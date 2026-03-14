@@ -129,28 +129,40 @@
   }
   .warning strong { color: var(--brown); }
 
+  /* Table wrapper for horizontal scroll */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 1px solid var(--light-border);
+  }
   /* Tables */
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 14px;
+    font-size: 13px;
+    min-width: 600px;
   }
   thead th {
     background: var(--green);
     color: var(--white);
-    padding: 12px 16px;
+    padding: 10px 12px;
     text-align: left;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
   }
-  thead th:first-child { border-radius: 8px 0 0 0; }
-  thead th:last-child { border-radius: 0 8px 0 0; }
+  thead th:first-child { border-radius: 0; }
+  thead th:last-child { border-radius: 0; }
   tbody td {
-    padding: 11px 16px;
+    padding: 8px 12px;
     border-bottom: 1px solid var(--light-border);
+    white-space: nowrap;
   }
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:nth-child(even) { background: rgba(46,107,90,0.03); }
@@ -265,36 +277,29 @@
     border-bottom: 1.5px dotted var(--brown-light);
     cursor: help;
     position: relative;
-    white-space: nowrap;
   }
   .tip:hover::after {
     content: attr(data-tip);
-    position: absolute;
-    bottom: calc(100% + 8px);
+    position: fixed;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     background: var(--dark);
     color: var(--white);
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 13px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-size: 14px;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.6;
     white-space: normal;
     width: max-content;
-    max-width: 300px;
-    z-index: 100;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    max-width: 340px;
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
     pointer-events: none;
   }
   .tip:hover::before {
-    content: '';
-    position: absolute;
-    bottom: calc(100% + 2px);
-    left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: var(--dark);
+    content: none;
     z-index: 101;
     pointer-events: none;
   }
@@ -562,7 +567,7 @@ if (localStorage.getItem('bao-lang') === 'th') setLang('th');
   <p data-th="ตารางนี้แยกรายเดือนของกรณี <strong>Base</strong> และ <strong>Phase 1</strong> เพื่อให้เห็นว่า <span class=&quot;tip&quot; data-tip=&quot;How quickly the business goes from empty (just opened, nobody knows about it) to its normal customer level. Most new places take 6-12 months to reach full speed.&quot; data-tip-th=&quot;ธุรกิจไปจากว่างเปล่า (เพิ่งเปิด ยังไม่มีใครรู้จัก) ถึงระดับลูกค้าปกติเร็วแค่ไหน ร้านใหม่ส่วนใหญ่ใช้เวลา 6-12 เดือนกว่าจะเข้าที่&quot;>ramp</span> และ <span class=&quot;tip&quot; data-tip=&quot;How customer traffic changes with the time of year. Hua Hin gets more visitors in cool season (Nov-Feb) and fewer in rainy season (Jun-Sep).&quot; data-tip-th=&quot;จำนวนลูกค้าเปลี่ยนไปตามฤดูกาลอย่างไร หัวหินมีคนเที่ยวมากช่วงหนาว (พ.ย.-ก.พ.) และน้อยลงช่วงฝน (มิ.ย.-ก.ย.)&quot;>seasonality</span> ส่งผลต่อแต่ละเดือนอย่างไร">Full month-by-month breakdown for the <strong>Base</strong> and <strong>Phase 1</strong> scenarios, showing how ramp and <span class="tip" data-tip="How customer traffic changes with the time of year. Hua Hin gets more visitors in cool season (Nov-Feb) and fewer in rainy season (Jun-Sep)." data-tip-th="จำนวนลูกค้าเปลี่ยนไปตามฤดูกาลอย่างไร หัวหินมีคนเที่ยวมากช่วงหนาว (พ.ย.-ก.พ.) และน้อยลงช่วงฝน (มิ.ย.-ก.ย.)">seasonality</span> affect each month.</p>
 
   <h3 data-th="กรณีฐาน (สร้างเต็มรูปแบบ) &mdash; กำไรขาดทุนรายเดือน">Base Case (Full Build) &mdash; Monthly P&amp;L</h3>
-  <div style="overflow-x:auto">
+  <div class="table-wrap">
   <table style="font-size:12px;">
     <thead><tr><th data-th="เดือน">Month</th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;How busy the business is compared to its full potential. 47% means the business is running at less than half speed (because it just opened and it's still building up customers).&quot; data-tip-th=&quot;ธุรกิจใช้ศักยภาพจริงไปมากน้อยแค่ไหน 47% คือยังเดินได้ไม่ถึงครึ่ง เพราะเพิ่งเปิดและยังอยู่ช่วงสร้างฐานลูกค้า&quot;>ระดับดีมานด์</span>"><span class="tip" data-tip="How busy the business is compared to its full potential. 47% means the business is running at less than half speed (because it just opened and it's still building up customers).">Demand</span></th><th class="num" data-th="คาเฟ่">Cafe</th><th class="num" data-th="สตูดิโอ">Studio</th><th class="num" data-th="อีเวนต์">Events</th><th class="num" data-th="BAO Jai">BAO Jai</th><th class="num" data-th="ตลาดนัด">Flea</th><th class="num" data-th="รายได้รวม">Total Rev</th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;Costs that go up when you sell more (ingredients, supplies). If you sell zero, these are zero.&quot; data-tip-th=&quot;ต้นทุนที่เพิ่มขึ้นตามยอดขาย (วัตถุดิบ ของใช้) ถ้าขายเป็นศูนย์ ต้นทุนนี้ก็เป็นศูนย์&quot;>ต้นทุนผันแปร</span>"><span class="tip" data-tip="Costs that go up when you sell more (ingredients, supplies). If you sell zero, these are zero." data-tip-th="ต้นทุนที่เพิ่มขึ้นตามยอดขาย (วัตถุดิบ ของใช้) ถ้าขายเป็นศูนย์ ต้นทุนนี้ก็เป็นศูนย์">Var Costs</span></th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;Costs you pay every month no matter what — rent, salaries, electricity. Even if zero customers come, you still pay these.&quot; data-tip-th=&quot;ค่าใช้จ่ายที่ต้องจ่ายทุกเดือนไม่ว่าจะเกิดอะไร ค่าเช่า เงินเดือน ค่าไฟ แม้ไม่มีลูกค้าเลยก็ยังต้องจ่าย&quot;>ต้นทุนคงที่</span>"><span class="tip" data-tip="Costs you pay every month no matter what — rent, salaries, electricity. Even if zero customers come, you still pay these." data-tip-th="ค่าใช้จ่ายที่ต้องจ่ายทุกเดือนไม่ว่าจะเกิดอะไร ค่าเช่า เงินเดือน ค่าไฟ แม้ไม่มีลูกค้าเลยก็ยังต้องจ่าย">Fixed</span></th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;What's left after paying ALL costs (both variable and fixed). Positive = making money. Negative = losing money that month.&quot; data-tip-th=&quot;เงินที่เหลือหลังจ่ายต้นทุนทั้งหมด ทั้งต้นทุนผันแปรและต้นทุนคงที่ ถ้าเป็นบวกคือกำไร ถ้าเป็นลบคือขาดทุนในเดือนนั้น&quot;>กำไร</span>"><span class="tip" data-tip="What's left after paying ALL costs (both variable and fixed). Positive = making money. Negative = losing money that month.">Profit</span></th></tr></thead>
     <tbody>
@@ -584,7 +589,7 @@ if (localStorage.getItem('bao-lang') === 'th') setLang('th');
   </div>
 
   <h3 data-th="Phase 1 (คาเฟ่ + สตูดิโอ) &mdash; กำไรขาดทุนรายเดือน">Phase 1 (Cafe + Studio) &mdash; Monthly P&amp;L</h3>
-  <div style="overflow-x:auto">
+  <div class="table-wrap">
   <table style="font-size:12px;">
     <thead><tr><th data-th="เดือน">Month</th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;How busy the business is compared to its full potential. 47% means the business is running at less than half speed (because it just opened and it's still building up customers).&quot; data-tip-th=&quot;ธุรกิจใช้ศักยภาพจริงไปมากน้อยแค่ไหน 47% คือยังเดินได้ไม่ถึงครึ่ง เพราะเพิ่งเปิดและยังอยู่ช่วงสร้างฐานลูกค้า&quot;>ระดับดีมานด์</span>"><span class="tip" data-tip="How busy the business is compared to its full potential. 47% means the business is running at less than half speed (because it just opened and it's still building up customers).">Demand</span></th><th class="num" data-th="คาเฟ่">Cafe</th><th class="num" data-th="สตูดิโอ">Studio</th><th class="num" data-th="อีเวนต์">Events</th><th class="num" data-th="รายได้รวม">Total Rev</th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;Costs that go up when you sell more (ingredients, supplies). If you sell zero, these are zero.&quot; data-tip-th=&quot;ต้นทุนที่เพิ่มขึ้นตามยอดขาย (วัตถุดิบ ของใช้) ถ้าขายเป็นศูนย์ ต้นทุนนี้ก็เป็นศูนย์&quot;>ต้นทุนผันแปร</span>"><span class="tip" data-tip="Costs that go up when you sell more (ingredients, supplies). If you sell zero, these are zero.">Var Costs</span></th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;Costs you pay every month no matter what — rent, salaries, electricity. Even if zero customers come, you still pay these.&quot; data-tip-th=&quot;ค่าใช้จ่ายที่ต้องจ่ายทุกเดือนไม่ว่าจะเกิดอะไร ค่าเช่า เงินเดือน ค่าไฟ แม้ไม่มีลูกค้าเลยก็ยังต้องจ่าย&quot;>ต้นทุนคงที่</span>"><span class="tip" data-tip="Costs you pay every month no matter what — rent, salaries, electricity. Even if zero customers come, you still pay these.">Fixed</span></th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;What's left after paying ALL costs (both variable and fixed). Positive = making money. Negative = losing money that month.&quot; data-tip-th=&quot;เงินที่เหลือหลังจ่ายต้นทุนทั้งหมด ทั้งต้นทุนผันแปรและต้นทุนคงที่ ถ้าเป็นบวกคือกำไร ถ้าเป็นลบคือขาดทุนในเดือนนั้น&quot;>กำไร</span>"><span class="tip" data-tip="What's left after paying ALL costs (both variable and fixed). Positive = making money. Negative = losing money that month.">Profit</span></th></tr></thead>
     <tbody>
