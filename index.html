@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAO Hua Hin — Executive Feasibility Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700&family=DM+Serif+Display&display=swap');
+
+  :root {
+    --green: #2E6B5A;
+    --green-light: #5B7F6A;
+    --green-bg: #F0F5F2;
+    --brown: #8B6F4E;
+    --brown-light: #C4A882;
+    --dark: #2D3436;
+    --body: #333333;
+    --subtle: #666666;
+    --muted: #999999;
+    --light-border: #E8E0D8;
+    --cream: #FDFBF8;
+    --white: #FFFFFF;
+    --red-soft: #C0392B;
+    --amber-soft: #D4A017;
+    --green-soft: #27AE60;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--body);
+    background: var(--cream);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Cover */
+  .cover {
+    text-align: center;
+    padding: 100px 32px 80px;
+    border-bottom: 1px solid var(--light-border);
+  }
+  .cover h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    color: var(--green);
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .cover .thai {
+    font-size: 20px;
+    color: var(--brown);
+    margin-bottom: 32px;
+    letter-spacing: 4px;
+  }
+  .cover .subtitle {
+    font-size: 18px;
+    color: var(--subtle);
+    font-weight: 300;
+    margin-bottom: 48px;
+  }
+  .cover .meta {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 2;
+  }
+  .cover .meta strong {
+    color: var(--subtle);
+    font-weight: 500;
+  }
+
+  /* Section headers */
+  .section {
+    padding: 56px 0 0;
+  }
+  .section-number {
+    font-size: 12px;
+    color: var(--brown);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--green);
+    font-weight: 400;
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+  .section h3 {
+    font-size: 16px;
+    color: var(--green-light);
+    font-weight: 700;
+    margin: 32px 0 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  p { margin-bottom: 16px; }
+
+  .highlight {
+    background: var(--green-bg);
+    border-left: 3px solid var(--green);
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .highlight strong { color: var(--green); }
+
+  .warning {
+    background: #FFF8F0;
+    border-left: 3px solid var(--brown);
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .warning strong { color: var(--brown); }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  thead th {
+    background: var(--green);
+    color: var(--white);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  thead th:first-child { border-radius: 8px 0 0 0; }
+  thead th:last-child { border-radius: 0 8px 0 0; }
+  tbody td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--light-border);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: rgba(46,107,90,0.03); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .total td {
+    font-weight: 700;
+    color: var(--green);
+    border-top: 2px solid var(--green);
+  }
+  .negative { color: var(--red-soft); }
+  .positive { color: var(--green-soft); }
+  .neutral { color: var(--amber-soft); }
+
+  /* Scenario cards */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--light-border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .card.recommended {
+    border: 2px solid var(--green);
+    background: var(--green-bg);
+  }
+  .card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .card .label.rec {
+    color: var(--green);
+    font-weight: 700;
+  }
+  .card .value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+  .card .detail {
+    font-size: 13px;
+    color: var(--subtle);
+    line-height: 1.6;
+  }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+  }
+  .checklist li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--green);
+    border-radius: 3px;
+  }
+
+  /* Ordered steps */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+  }
+  .steps li {
+    counter-increment: step;
+    padding: 12px 0 12px 48px;
+    position: relative;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 32px;
+    height: 32px;
+    background: var(--green);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .steps li strong { color: var(--green); }
+
+  /* Tooltips for finance terms */
+  .tip {
+    border-bottom: 1.5px dotted var(--brown-light);
+    cursor: help;
+    position: relative;
+    white-space: nowrap;
+  }
+  .tip:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark);
+    color: var(--white);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    white-space: normal;
+    width: max-content;
+    max-width: 300px;
+    z-index: 100;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    pointer-events: none;
+  }
+  .tip:hover::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--dark);
+    z-index: 101;
+    pointer-events: none;
+  }
+
+  /* Language toggle */
+  .lang-btn {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 200;
+    display: flex;
+    background: var(--white);
+    border: 2px solid var(--green);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .lang-btn button {
+    border: none;
+    background: none;
+    padding: 8px 18px;
+    cursor: pointer;
+    color: var(--green);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .lang-btn button.active {
+    background: var(--green);
+    color: var(--white);
+  }
+  .lang-btn button:hover:not(.active) {
+    background: var(--green-bg);
+  }
+  /* Language toggle active state on body (used by JS) */
+
+  /* Divider */
+  hr {
+    border: none;
+    border-top: 1px solid var(--light-border);
+    margin: 48px 0;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 48px 0 80px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+    border-top: 1px solid var(--light-border);
+    margin-top: 48px;
+  }
+
+  /* Print */
+  @media print {
+    body { background: white; font-size: 12px; }
+    .page { max-width: 100%; padding: 0; }
+    .cover { padding: 40px 0 32px; }
+    .section { padding-top: 32px; }
+    .cards { grid-template-columns: 1fr 1fr; }
+    .card { break-inside: avoid; }
+    table { break-inside: avoid; }
+  }
+
+  @media (max-width: 600px) {
+    .cards { grid-template-columns: 1fr; }
+    .cover h1 { font-size: 36px; }
+    .section h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Language toggle -->
+<div class="lang-btn">
+  <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+  <button id="btn-th" onclick="setLang('th')">TH</button>
+</div>
+<script>
+function setLang(lang) {
+  document.body.classList.toggle('lang-th', lang === 'th');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-th').classList.toggle('active', lang === 'th');
+  // Swap elements with data-th
+  document.querySelectorAll('[data-th]').forEach(el => {
+    if (!el._origEn) el._origEn = el.innerHTML;
+    el.innerHTML = (lang === 'th') ? el.dataset.th : el._origEn;
+  });
+  // Swap tooltip text
+  document.querySelectorAll('.tip').forEach(el => {
+    if (lang === 'th' && el.dataset.tipTh) {
+      if (!el._tipEn) el._tipEn = el.dataset.tip;
+      el.dataset.tip = el.dataset.tipTh;
+    } else if (el._tipEn) {
+      el.dataset.tip = el._tipEn;
+    }
+  });
+  localStorage.setItem('bao-lang', lang);
+}
+// Restore saved language
+if (localStorage.getItem('bao-lang') === 'th') setLang('th');
+</script>
+
+<!-- COVER -->
+<div class="cover">
+  <h1>BAO</h1>
+  <div class="thai">เบา &middot; 寶</div>
+  <div class="subtitle" data-th="รายงานความเป็นไปได้ทางการเงิน">Executive Feasibility Report</div>
+  <div class="meta" data-th="<strong>จัดทำให้</strong> ปัง<br><strong>วันที่</strong> 14 มีนาคม 2026<br><strong>โดย</strong> ทีม AI ของ Ducki (Claude &amp; Codex) — ตรวจสอบซึ่งกันและกัน 2 รอบ">
+    <strong>Prepared for</strong> Pang<br>
+    <strong>Date</strong> March 14, 2026<br>
+    <strong>By</strong> Ducki's AI team (Claude &amp; Codex) &mdash; 2 adversarial review rounds
+  </div>
+</div>
+
+<div class="page">
+
+<!-- 1. WHAT THIS IS -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 01">Section 01</div>
+  <h2 data-th="รายงานนี้คืออะไร">What This Report Is</h2>
+  <p data-th="นี่คือการประเมินความเป็นไปได้ทางการเงินอย่างตรงไปตรงมาของ BAO — พื้นที่ไลฟ์สไตล์ที่รวมคาเฟ่ สตูดิโอเวลเนส กิจกรรมอนาล็อก และอีเวนต์ในสวน บนที่ดินครอบครัว 540 ตร.ม. ที่หัวหิน">This is an honest financial feasibility assessment of BAO &mdash; a conscious lifestyle space combining cafe, wellness studio, analog activities, and garden events on 540 sqm of family land in Hua Hin.</p>
+  <p data-th="เราสร้างโมเดลทางการเงิน ทดสอบทุกสมมติฐานอย่างเข้มงวด และแก้ไข 2 รอบผ่านการตรวจสอบข้ามระหว่าง AI 2 ตัว ตัวเลขด้านล่างเป็นการประมาณที่ใกล้เคียงความจริงมากที่สุด — ไม่ใช่สไลด์ขายฝัน">We built a financial model, stress-tested every assumption, and corrected it twice through adversarial review between two AI agents. The numbers below reflect our best estimate of reality &mdash; not a pitch deck.</p>
+</div>
+
+<hr>
+
+<!-- 2. LAND CONSTRAINT -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 02">Section 02</div>
+  <h2 data-th="ข้อจำกัดของที่ดิน">The Land Constraint</h2>
+  <p data-th="จากที่ดินทั้งหมด 540 ตร.ม. <strong style='color:var(--green)'>สร้างอาคารปิดได้เพียง 135 ตร.ม. เท่านั้น</strong> ส่วนที่เหลือ 405 ตร.ม. เป็นสวนและพื้นที่เปิดโล่ง">Of the 540 sqm total land, <strong style="color:var(--green)">only 135 sqm is buildable enclosed space</strong>. The remaining 405 sqm is garden and outdoor only.</p>
+  <p data-th="ทุกอย่างที่ต้องอยู่ในอาคาร — คาเฟ่ ครัว สตูดิโอ ห้องน้ำ ห้องเก็บของ — ต้องอัดลงใน 135 ตร.ม. ซึ่งค่อนข้างจำกัด:">All indoor operations &mdash; cafe, kitchen, studio, restrooms, storage &mdash; must fit within 135 sqm. That is tight:</p>
+
+  <table>
+    <thead><tr><th data-th="โซน">Zone</th><th class="num" data-th="พื้นที่โดยประมาณ (ตร.ม.)">Est. sqm</th><th data-th="หมายเหตุ">Notes</th></tr></thead>
+    <tbody>
+      <tr><td data-th="คาเฟ่ (ที่นั่ง + บาร์)">Cafe (seating + bar)</td><td class="num">50–60</td><td data-th="~15–20 ที่นั่งในอาคาร">~15–20 indoor seats</td></tr>
+      <tr><td data-th="ครัว / พื้นที่เตรียม">Kitchen / prep</td><td class="num">15–20</td><td data-th="ผังเล็กแต่ทำงานได้คล่องตัว">Compact, efficient layout</td></tr>
+      <tr><td data-th="สตูดิโอ">Studio</td><td class="num">30–35</td><td data-th="รองรับได้ 10–12 คน">Fits 10–12 people</td></tr>
+      <tr><td data-th="ห้องน้ำ (&times;2)">Restrooms (&times;2)</td><td class="num">8–10</td><td></td></tr>
+      <tr><td data-th="พื้นที่เก็บของ">Storage</td><td class="num">5–8</td><td></td></tr>
+      <tr class="total"><td data-th="รวม">Total</td><td class="num">108–133</td><td data-th="แทบไม่เหลือพื้นที่ในอาคารสำหรับ BAO Jai">Little room for BAO Jai indoors</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warning" data-th="<strong>ผลกระทบ:</strong> BAO Jai (โซนกิจกรรมอนาล็อก) น่าจะต้องเป็นพื้นที่กลางแจ้งหรือมีหลังคาคลุม แทนที่จะเป็นอาคารปิด Concept Bible 4 โซนต้องปรับให้เข้ากับข้อจำกัดทางกายภาพนี้"><strong>Implication:</strong> BAO Jai (the analog activity zone) likely needs to be outdoor/covered rather than enclosed. The 4-zone concept bible needs to be adapted to this physical reality.</div>
+</div>
+
+<hr>
+
+<!-- 3. CAPITAL -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 03">Section 03</div>
+  <h2 data-th="ต้องใช้เงินลงทุนเท่าไหร่">How Much Capital Is Needed</h2>
+  <p data-th="นี่คือ<strong>การก่อสร้างใหม่บนที่ดินเปล่า</strong> — ไม่มีอาคารเดิมให้ปรับปรุง">This is a <strong>new build on empty land</strong> &mdash; no existing structure to renovate.</p>
+
+  <h3 data-th="สร้างเต็มรูปแบบ (ทั้ง 4 โซน)">Full Build (all 4 zones)</h3>
+  <table>
+    <thead><tr><th></th><th class="num" data-th="แย่กว่าคาด">Pessimistic</th><th class="num" data-th="กรณีฐาน">Base</th><th class="num" data-th="ดีกว่าคาด">Optimistic</th></tr></thead>
+    <tbody>
+      <tr><td data-th="งานก่อสร้าง">Construction</td><td class="num">6.1M</td><td class="num">5.2M</td><td class="num">4.5M</td></tr>
+      <tr><td data-th="อุปกรณ์">Equipment</td><td class="num">1.4M</td><td class="num">1.1M</td><td class="num">800K</td></tr>
+      <tr><td data-th="<span class=&quot;tip&quot; data-tip=&quot;Cash saved up to pay bills while the business is still getting started and not yet making enough money. Think of it as a safety cushion.&quot; data-tip-th=&quot;เงินสำรองไว้จ่ายค่าใช้จ่ายตอนที่ร้านเพิ่งเปิดและยังไม่ได้กำไรพอ เหมือนเงินเบาะรองรับนั่นเอง&quot;>เงินทุนหมุนเวียน</span>"><span class="tip" data-tip="Cash saved up to pay bills while the business is still getting started and not yet making enough money. Think of it as a safety cushion." data-tip-th="เงินสำรองไว้จ่ายค่าใช้จ่ายตอนที่ร้านเพิ่งเปิดและยังไม่ได้กำไรพอ เหมือนเงินเบาะรองรับนั่นเอง">Working capital</span></td><td class="num">2.0M</td><td class="num">1.5M</td><td class="num">1.2M</td></tr>
+      <tr class="total"><td data-th="รวม">Total</td><td class="num">9.5M</td><td class="num">7.8M</td><td class="num">6.5M</td></tr>
+    </tbody>
+  </table>
+
+  <h3 data-th="Phase 1 (คาเฟ่ + สตูดิโอ) &mdash; แนะนำ">Phase 1 (Cafe + Studio) &mdash; Recommended</h3>
+  <table>
+    <thead><tr><th data-th="รายการ">Item</th><th class="num" data-th="บาท">THB</th></tr></thead>
+    <tbody>
+      <tr><td data-th="งานก่อสร้าง (~85 ตร.ม. พื้นที่ปิด + สวนพื้นฐาน)">Construction (~85 sqm enclosed + basic garden)</td><td class="num">2,800,000</td></tr>
+      <tr><td data-th="อุปกรณ์">Equipment</td><td class="num">700,000</td></tr>
+      <tr><td data-th="<span class=&quot;tip&quot; data-tip=&quot;Cash saved up to pay bills while the business is still getting started and not yet making enough money. Think of it as a safety cushion.&quot; data-tip-th=&quot;เงินสำรองไว้จ่ายค่าใช้จ่ายตอนที่ร้านเพิ่งเปิดและยังไม่ได้กำไรพอ เหมือนเงินเบาะรองรับนั่นเอง&quot;>เงินทุนหมุนเวียน</span> (เผื่อไว้ 6 เดือนขึ้นไป)"><span class="tip" data-tip="Cash saved up to pay bills while the business is still getting started and not yet making enough money. Think of it as a safety cushion.">Working capital</span> (6+ month buffer)</td><td class="num">1,200,000</td></tr>
+      <tr class="total"><td data-th="รวม">Total</td><td class="num">4,700,000</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight" data-th="<strong>อ้างอิงค่าก่อสร้าง:</strong> งานก่อสร้างใหม่ระดับธุรกิจบริการในไทยสำหรับพื้นที่ปิด อยู่ราว 25,000–30,000 บาท/ตร.ม. ยังไม่รวมงานสวน ระบบระบายน้ำ โครงสร้างกลางแจ้ง และ <span class=&quot;tip&quot; data-tip=&quot;Mechanical, Electrical, and Plumbing — the hidden systems inside a building: AC ducts, wiring, water pipes, drainage.&quot; data-tip-th=&quot;ระบบเครื่องกล ไฟฟ้า และประปา ระบบที่มองไม่เห็นในอาคาร: ท่อแอร์ สายไฟ ท่อน้ำ ระบบระบายน้ำ&quot;>ระบบ MEP</span> ซึ่งเพิ่มได้อีก 600,000–1.2 ล้านบาท ส่วนอุปกรณ์รวมถึงเครื่องเอสเปรสโซเชิงพาณิชย์ (อย่างเดียวก็ 250,000–500,000 บาท) งานครัว เฟอร์นิเจอร์ ระบบเสียง และอุปกรณ์สตูดิโอ"><strong>Construction references:</strong> Thai hospitality-grade new build runs 25,000–30,000 THB/sqm for enclosed space. Garden landscaping, drainage, outdoor structures, and <span class="tip" data-tip="Mechanical, Electrical, and Plumbing — the hidden systems inside a building: AC ducts, wiring, water pipes, drainage." data-tip-th="ระบบเครื่องกล ไฟฟ้า และประปา ระบบที่มองไม่เห็นในอาคาร: ท่อแอร์ สายไฟ ท่อน้ำ ระบบระบายน้ำ">MEP infrastructure</span> add 600K–1.2M on top. Equipment includes a commercial espresso machine (250–500K alone), kitchen fit-out, furniture, sound system, and studio props.</div>
+</div>
+
+<hr>
+
+<!-- 4. MONTHLY COSTS -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 04">Section 04</div>
+  <h2 data-th="ค่าใช้จ่ายรายเดือน">Monthly Operating Costs</h2>
+
+  <h3 data-th="สร้างเต็มรูปแบบ: 223,000 บาท/เดือน">Full Build: 223,000 THB/month</h3>
+  <table>
+    <thead><tr><th data-th="รายการ">Item</th><th class="num" data-th="บาท/เดือน">THB/month</th></tr></thead>
+    <tbody>
+      <tr><td data-th="<span class=&quot;tip&quot; data-tip=&quot;Not real rent you pay — it's a 'what if' number. If you COULD rent this land to someone else, what would they pay? We include it so the model doesn't trick us into thinking free land = free business.&quot; data-tip-th=&quot;ไม่ใช่ค่าเช่าที่จ่ายจริง แต่เป็นตัวเลขสมมติว่าถ้าปล่อยที่ดินนี้ให้คนอื่นเช่า จะได้เท่าไร เราใส่ไว้เพื่อไม่ให้โมเดลหลอกตัวเองว่าที่ดินฟรี = ธุรกิจฟรี&quot;>ค่าเช่าทางบัญชี</span> (ที่ดินครอบครัว)"><span class="tip" data-tip="Not real rent you pay — it's a 'what if' number. If you COULD rent this land to someone else, what would they pay? We include it so the model doesn't trick us into thinking free land = free business.">Imputed rent</span> (family land)</td><td class="num">20,000</td></tr>
+      <tr><td data-th="บาริสต้า (&times;2)">Baristas (&times;2)</td><td class="num">36,000</td></tr>
+      <tr><td data-th="หัวหน้าคาเฟ่ / ผู้จัดการ">Cafe lead / manager</td><td class="num">28,000</td></tr>
+      <tr><td data-th="แอดมินพาร์ตไทม์">Part-time admin</td><td class="num">12,000</td></tr>
+      <tr><td data-th="ค่าสาธารณูปโภค (แอร์ ครัว น้ำ อินเทอร์เน็ต)">Utilities (AC, kitchen, water, internet)</td><td class="num">32,000</td></tr>
+      <tr><td data-th="การตลาด (ช่วงเปิดปีแรก)">Marketing (Year 1 launch)</td><td class="num">35,000</td></tr>
+      <tr><td data-th="ค่าดูแลสวนและสถานที่">Maintenance (tropical garden + property)</td><td class="num">18,000</td></tr>
+      <tr><td data-th="ทำความสะอาด">Cleaning</td><td class="num">8,000</td></tr>
+      <tr><td data-th="ซอฟต์แวร์ <span class=&quot;tip&quot; data-tip=&quot;Point of Sale — the system you use to take payments. The screen/tablet at the counter where customers pay and you track sales.&quot; data-tip-th=&quot;ระบบรับชำระเงิน หน้าจอ/แท็บเล็ตที่เคาน์เตอร์สำหรับรับเงินและติดตามยอดขาย&quot;>POS</span> และระบบจอง">Software, <span class="tip" data-tip="Point of Sale — the system you use to take payments. The screen/tablet at the counter where customers pay and you track sales." data-tip-th="ระบบรับชำระเงิน หน้าจอ/แท็บเล็ตที่เคาน์เตอร์สำหรับรับเงินและติดตามยอดขาย">POS</span>, booking</td><td class="num">7,000</td></tr>
+      <tr><td data-th="ใบอนุญาต / ประกัน">Licensing / insurance</td><td class="num">7,000</td></tr>
+      <tr><td data-th="บัญชี">Accounting</td><td class="num">5,000</td></tr>
+      <tr><td data-th="อาหารพนักงาน / ชุดยูนิฟอร์ม">Staff meals / uniforms</td><td class="num">4,000</td></tr>
+      <tr><td data-th="<span class=&quot;tip&quot; data-tip=&quot;Thai law requires employers to pay 5% of each employee's salary into the social security fund (capped at 750 THB/person/month).&quot; data-tip-th=&quot;กฎหมายไทยกำหนดให้นายจ้างจ่ายเงินสมทบประกันสังคม 5% ของเงินเดือนพนักงาน โดยเพดานอยู่ที่ 750 บาทต่อคนต่อเดือน&quot;>ประกันสังคม (ส่วนนายจ้าง)</span>"><span class="tip" data-tip="Thai law requires employers to pay 5% of each employee's salary into the social security fund (capped at 750 THB/person/month).">Social security (employer)</span></td><td class="num">3,000</td></tr>
+      <tr><td data-th="ขยะ / บ่อดักไขมัน">Waste / grease trap</td><td class="num">3,000</td></tr>
+      <tr><td data-th="กำจัดแมลงและสัตว์รบกวน">Pest control</td><td class="num">2,500</td></tr>
+      <tr><td data-th="ความปลอดภัย (CCTV)">Security (CCTV)</td><td class="num">1,500</td></tr>
+      <tr><td data-th="ค่าลิขสิทธิ์เพลง">Music licensing</td><td class="num">1,000</td></tr>
+      <tr class="total"><td data-th="รวม">Total</td><td class="num">223,000</td></tr>
+    </tbody>
+  </table>
+
+  <p data-th="<strong>Phase 1:</strong> 192,000 บาท/เดือน &mdash; ใช้ทีมงานชุดเดิม แต่ค่าสาธารณูปโภค ค่าดูแลสถานที่ และค่าทำความสะอาดลดลงตามขนาดพื้นที่ที่เล็กกว่า"><strong>Phase 1:</strong> 192,000 THB/month &mdash; same staff, reduced utilities, maintenance, and cleaning for the smaller space.</p>
+
+  <div class="warning" data-th="<strong>หมายเหตุเรื่องค่าเช่า:</strong> โมเดลใส่ตัวเลข 20,000 บาท/เดือนเป็นค่าเช่าทางบัญชีของที่ดินครอบครัว ทั้งที่ในความเป็นจริงไม่ได้จ่ายค่าเช่า วิธีนี้ช่วยให้มองเศรษฐศาสตร์ของธุรกิจอย่างตรงไปตรงมา ถ้าตัดออกทั้งหมด ตัวเลขจะดูดีขึ้นปีละ 240,000 บาท แต่จะทำให้มองไม่เห็นผลตอบแทนที่แท้จริงของที่ดิน"><strong>Note on rent:</strong> The model uses 20,000 THB/month as an imputed charge on the family land. In reality, no rent is paid &mdash; this keeps the economics honest. If removed entirely, the business looks 240K/year better, but that masks the true economic return on the land.</div>
+</div>
+
+<hr>
+
+<!-- 5. REVENUE -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 05">Section 05</div>
+  <h2 data-th="สมมติฐานรายได้">Revenue Assumptions</h2>
+
+  <h3 data-th="รายได้มาจากไหน (กรณีฐาน, สร้างเต็มรูปแบบ)">Where the money comes from (Base case, full build)</h3>
+  <table>
+    <thead><tr><th data-th="โซน">Zone</th><th data-th="ที่มาของรายได้">How it works</th><th class="num" data-th="เฉลี่ยต่อเดือน">Avg monthly</th></tr></thead>
+    <tbody>
+      <tr><td data-th="<strong>คาเฟ่</strong>"><strong>Cafe</strong></td><td data-th="วันธรรมดา 40 คน / วันหยุด 85 คน @ 180 บาทต่อคน">40 weekday / 85 weekend covers @ 180 THB <span class="tip" data-tip="Average amount one customer spends per visit. If 10 people spend a total of 1,800 THB, the average ticket is 180 THB." data-tip-th="ยอดเฉลี่ยที่ลูกค้า 1 คนจ่ายต่อครั้ง ถ้า 10 คนจ่ายรวม 1,800 บาท ยอดเฉลี่ยต่อคนคือ 180 บาท">avg ticket</span></td><td class="num">~237K</td></tr>
+      <tr><td data-th="<strong>สตูดิโอ</strong>"><strong>Studio</strong></td><td data-th="22 คลาส/เดือน รับได้ 10 คน เต็ม 65% ราคา 700 บาท BAO เก็บ 40%">22 sessions/mo, 10 capacity, 65% fill, 700 THB. BAO keeps 40%</td><td class="num">~33K</td></tr>
+      <tr><td data-th="<strong>อีเวนต์</strong>"><strong>Events</strong></td><td>2 events/mo, 15 spots @ 2,500 THB, 75% <span class="tip" data-tip="What percentage of available spots actually get sold. 75% sell-through on 15 spots means 11-12 tickets sold." data-tip-th="เปอร์เซ็นต์ของที่นั่งที่ขายได้จริง 75% ของ 15 ที่นั่ง = ขายได้ 11-12 ใบ">sell-through</span> (gross)</td><td class="num">~46K</td></tr>
+      <tr><td data-th="<strong>BAO Jai</strong>"><strong>BAO Jai</strong></td><td data-th="ลูกค้าคาเฟ่ 8% ทดลองกิจกรรมราคา 170 บาท">8% of cafe visitors try a 170 THB activity</td><td class="num">~18K</td></tr>
+      <tr><td data-th="<strong>ตลาดนัด</strong>"><strong>Flea Market</strong></td><td data-th="ร้านค้า 14 ราย @ 800 บาท/เดือน">14 vendors @ 800 THB/month</td><td class="num">~9K</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight" data-th="<strong>คาเฟ่คือแหล่งรายได้หลัก</strong> คิดเป็น ~69% ของรายได้ทั้งหมด สตูดิโอ อีเวนต์ และกิจกรรมเป็นตัวเสริม ไม่ใช่รายได้หลัก"><strong>The cafe is the primary revenue driver</strong> at ~69% of total revenue. Studio, events, and activities are margin enhancers, not primary income.</div>
+
+  <h3 data-th="อัตราต้นทุนผันแปร">Variable cost rates</h3>
+  <table>
+    <thead><tr><th data-th="โซน">Zone</th><th data-th="<span class=&quot;tip&quot; data-tip=&quot;Cost of Goods Sold — the direct cost of making what you sell. If a coffee costs 65 THB in beans, milk, and cup to make and sells for 180 THB, the COGS rate is about 36%.&quot; data-tip-th=&quot;ต้นทุนขาย ค่าใช้จ่ายตรงในการทำสินค้าที่ขาย ถ้ากาแฟแก้วหนึ่งใช้เมล็ด นม แก้ว รวม 65 บาท แล้วขาย 180 บาท อัตราต้นทุนขายคือ 36%&quot;>อัตราต้นทุนขาย</span>"><span class="tip" data-tip="Cost of Goods Sold — the direct cost of making what you sell. If a coffee costs 65 THB in beans, milk, and cup to make and sells for 180 THB, the COGS rate is about 36%." data-tip-th="ต้นทุนขาย ค่าใช้จ่ายตรงในการทำสินค้าที่ขาย ถ้ากาแฟแก้วหนึ่งใช้เมล็ด นม แก้ว รวม 65 บาท แล้วขาย 180 บาท อัตราต้นทุนขายคือ 36%">COGS rate</span></th><th data-th="เหตุผล">Why</th></tr></thead>
+    <tbody>
+      <tr><td data-th="คาเฟ่">Cafe</td><td>36%</td><td data-th="วัตถุดิบ ของเสีย &mdash; มีแค่สาขาเดียวจึงยังไม่มีอำนาจต่อรองจากขนาด">Ingredients, spoilage &mdash; single-site, no scale</td></tr>
+      <tr><td data-th="BAO Jai">BAO Jai</td><td>25%</td><td data-th="วัสดุชุดกิจกรรมและของใช้สิ้นเปลือง">Kit materials, consumables</td></tr>
+      <tr><td data-th="สตูดิโอ">Studio</td><td>8%</td><td data-th="ซักล้าง ทำความสะอาด และอุปกรณ์ประกอบคลาส (~150 บาท/คลาส)">Laundry, sanitizing, props (~150 THB/session)</td></tr>
+      <tr><td data-th="อีเวนต์">Events</td><td>60%</td><td data-th="ค่าวิทยากร (~40%) + ต้นทุนตรงอื่น ๆ (~20%)">Facilitator (~40%) + direct costs (~20%)</td></tr>
+      <tr><td data-th="ตลาดนัด">Flea Market</td><td>10%</td><td data-th="งานปฏิบัติการและเก็บพื้นที่">Ops and cleanup</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+
+<!-- 5B. DETAILED MONTHLY P&L -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 05b">Section 05b</div>
+  <h2 data-th="รายละเอียดรายได้และกำไรรายเดือน">Monthly Revenue &amp; Profit Detail</h2>
+  <p data-th="ตารางนี้แยกรายเดือนของกรณี <strong>Base</strong> และ <strong>Phase 1</strong> เพื่อให้เห็นว่า <span class=&quot;tip&quot; data-tip=&quot;How quickly the business goes from empty (just opened, nobody knows about it) to its normal customer level. Most new places take 6-12 months to reach full speed.&quot; data-tip-th=&quot;ธุรกิจไปจากว่างเปล่า (เพิ่งเปิด ยังไม่มีใครรู้จัก) ถึงระดับลูกค้าปกติเร็วแค่ไหน ร้านใหม่ส่วนใหญ่ใช้เวลา 6-12 เดือนกว่าจะเข้าที่&quot;>ramp</span> และ <span class=&quot;tip&quot; data-tip=&quot;How customer traffic changes with the time of year. Hua Hin gets more visitors in cool season (Nov-Feb) and fewer in rainy season (Jun-Sep).&quot; data-tip-th=&quot;จำนวนลูกค้าเปลี่ยนไปตามฤดูกาลอย่างไร หัวหินมีคนเที่ยวมากช่วงหนาว (พ.ย.-ก.พ.) และน้อยลงช่วงฝน (มิ.ย.-ก.ย.)&quot;>seasonality</span> ส่งผลต่อแต่ละเดือนอย่างไร">Full month-by-month breakdown for the <strong>Base</strong> and <strong>Phase 1</strong> scenarios, showing how ramp and <span class="tip" data-tip="How customer traffic changes with the time of year. Hua Hin gets more visitors in cool season (Nov-Feb) and fewer in rainy season (Jun-Sep)." data-tip-th="จำนวนลูกค้าเปลี่ยนไปตามฤดูกาลอย่างไร หัวหินมีคนเที่ยวมากช่วงหนาว (พ.ย.-ก.พ.) และน้อยลงช่วงฝน (มิ.ย.-ก.ย.)">seasonality</span> affect each month.</p>
+
+  <h3 data-th="กรณีฐาน (สร้างเต็มรูปแบบ) &mdash; กำไรขาดทุนรายเดือน">Base Case (Full Build) &mdash; Monthly P&amp;L</h3>
+  <div style="overflow-x:auto">
+  <table style="font-size:12px;">
+    <thead><tr><th data-th="เดือน">Month</th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;How busy the business is compared to its full potential. 47% means the business is running at less than half speed (because it just opened and it's still building up customers).&quot; data-tip-th=&quot;ธุรกิจใช้ศักยภาพจริงไปมากน้อยแค่ไหน 47% คือยังเดินได้ไม่ถึงครึ่ง เพราะเพิ่งเปิดและยังอยู่ช่วงสร้างฐานลูกค้า&quot;>ระดับดีมานด์</span>"><span class="tip" data-tip="How busy the business is compared to its full potential. 47% means the business is running at less than half speed (because it just opened and it's still building up customers).">Demand</span></th><th class="num" data-th="คาเฟ่">Cafe</th><th class="num" data-th="สตูดิโอ">Studio</th><th class="num" data-th="อีเวนต์">Events</th><th class="num" data-th="BAO Jai">BAO Jai</th><th class="num" data-th="ตลาดนัด">Flea</th><th class="num" data-th="รายได้รวม">Total Rev</th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;Costs that go up when you sell more (ingredients, supplies). If you sell zero, these are zero.&quot; data-tip-th=&quot;ต้นทุนที่เพิ่มขึ้นตามยอดขาย (วัตถุดิบ ของใช้) ถ้าขายเป็นศูนย์ ต้นทุนนี้ก็เป็นศูนย์&quot;>ต้นทุนผันแปร</span>"><span class="tip" data-tip="Costs that go up when you sell more (ingredients, supplies). If you sell zero, these are zero." data-tip-th="ต้นทุนที่เพิ่มขึ้นตามยอดขาย (วัตถุดิบ ของใช้) ถ้าขายเป็นศูนย์ ต้นทุนนี้ก็เป็นศูนย์">Var Costs</span></th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;Costs you pay every month no matter what — rent, salaries, electricity. Even if zero customers come, you still pay these.&quot; data-tip-th=&quot;ค่าใช้จ่ายที่ต้องจ่ายทุกเดือนไม่ว่าจะเกิดอะไร ค่าเช่า เงินเดือน ค่าไฟ แม้ไม่มีลูกค้าเลยก็ยังต้องจ่าย&quot;>ต้นทุนคงที่</span>"><span class="tip" data-tip="Costs you pay every month no matter what — rent, salaries, electricity. Even if zero customers come, you still pay these." data-tip-th="ค่าใช้จ่ายที่ต้องจ่ายทุกเดือนไม่ว่าจะเกิดอะไร ค่าเช่า เงินเดือน ค่าไฟ แม้ไม่มีลูกค้าเลยก็ยังต้องจ่าย">Fixed</span></th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;What's left after paying ALL costs (both variable and fixed). Positive = making money. Negative = losing money that month.&quot; data-tip-th=&quot;เงินที่เหลือหลังจ่ายต้นทุนทั้งหมด ทั้งต้นทุนผันแปรและต้นทุนคงที่ ถ้าเป็นบวกคือกำไร ถ้าเป็นลบคือขาดทุนในเดือนนั้น&quot;>กำไร</span>"><span class="tip" data-tip="What's left after paying ALL costs (both variable and fixed). Positive = making money. Negative = losing money that month.">Profit</span></th></tr></thead>
+    <tbody>
+      <tr><td data-th="ม.ค.">Jan</td><td class="num">47%</td><td class="num">137,941</td><td class="num">18,653</td><td class="num">26,205</td><td class="num">10,422</td><td class="num">5,218</td><td class="num">198,438</td><td class="num">70,001</td><td class="num">223,000</td><td class="num negative">-94,563</td></tr>
+      <tr><td data-th="ก.พ.">Feb</td><td class="num">63%</td><td class="num">167,597</td><td class="num">25,190</td><td class="num">35,388</td><td class="num">12,663</td><td class="num">7,046</td><td class="num">247,883</td><td class="num">87,453</td><td class="num">223,000</td><td class="num negative">-62,570</td></tr>
+      <tr><td data-th="มี.ค.">Mar</td><td class="num">74%</td><td class="num">219,843</td><td class="num">29,728</td><td class="num">41,763</td><td class="num">16,610</td><td class="num">8,316</td><td class="num">316,260</td><td class="num">111,564</td><td class="num">223,000</td><td class="num negative">-18,304</td></tr>
+      <tr><td data-th="เม.ย.">Apr</td><td class="num">79%</td><td class="num">221,915</td><td class="num">31,643</td><td class="num">44,454</td><td class="num">16,767</td><td class="num">8,851</td><td class="num">323,630</td><td class="num">114,170</td><td class="num">223,000</td><td class="num negative">-13,540</td></tr>
+      <tr><td data-th="พ.ค.">May</td><td class="num">80%</td><td class="num">241,989</td><td class="num">31,852</td><td class="num">44,747</td><td class="num">18,284</td><td class="num">8,910</td><td class="num">345,781</td><td class="num">121,974</td><td class="num">223,000</td><td class="num positive">+806</td></tr>
+      <tr><td data-th="มิ.ย.">Jun</td><td class="num">73%</td><td class="num">204,979</td><td class="num">29,229</td><td class="num">41,062</td><td class="num">15,487</td><td class="num">8,176</td><td class="num">298,932</td><td class="num">105,457</td><td class="num">223,000</td><td class="num negative">-29,525</td></tr>
+      <tr style="background:rgba(192,57,43,0.06)"><td data-th="ก.ค.">Jul</td><td class="num" style="color:var(--red-soft)">66%</td><td class="num">188,672</td><td class="num">26,231</td><td class="num">36,850</td><td class="num">14,255</td><td class="num">7,337</td><td class="num">273,346</td><td class="num">96,428</td><td class="num">223,000</td><td class="num negative">-46,082</td></tr>
+      <tr><td data-th="ส.ค.">Aug</td><td class="num">72%</td><td class="num">218,265</td><td class="num">28,729</td><td class="num">40,360</td><td class="num">16,491</td><td class="num">8,036</td><td class="num">311,880</td><td class="num">110,016</td><td class="num">223,000</td><td class="num negative">-21,135</td></tr>
+      <tr><td data-th="ก.ย.">Sep</td><td class="num">84%</td><td class="num">235,784</td><td class="num">33,621</td><td class="num">47,232</td><td class="num">17,815</td><td class="num">9,405</td><td class="num">343,857</td><td class="num">121,306</td><td class="num">223,000</td><td class="num negative">-448</td></tr>
+      <tr><td data-th="ต.ค.">Oct</td><td class="num">99%</td><td class="num">292,508</td><td class="num">39,554</td><td class="num">55,568</td><td class="num">22,101</td><td class="num">11,064</td><td class="num">420,794</td><td class="num">148,439</td><td class="num">223,000</td><td class="num positive">+49,355</td></tr>
+      <tr><td data-th="พ.ย.">Nov</td><td class="num">120%</td><td class="num">345,478</td><td class="num">47,881</td><td class="num">67,266</td><td class="num">26,103</td><td class="num">13,393</td><td class="num">500,122</td><td class="num">176,427</td><td class="num">223,000</td><td class="num positive">+100,695</td></tr>
+      <tr style="background:rgba(39,174,96,0.06)"><td data-th="ธ.ค.">Dec</td><td class="num" style="color:var(--green-soft)">127%</td><td class="num">365,366</td><td class="num">50,796</td><td class="num">71,360</td><td class="num">27,605</td><td class="num">14,209</td><td class="num">529,336</td><td class="num">186,734</td><td class="num">223,000</td><td class="num positive">+119,602</td></tr>
+      <tr class="total"><td data-th="ปีที่ 1">Year 1</td><td class="num"></td><td class="num">2,840,336</td><td class="num">393,107</td><td class="num">552,254</td><td class="num">214,603</td><td class="num">109,960</td><td class="num">4,110,260</td><td class="num">1,449,969</td><td class="num">2,676,000</td><td class="num negative">-15,709</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 data-th="Phase 1 (คาเฟ่ + สตูดิโอ) &mdash; กำไรขาดทุนรายเดือน">Phase 1 (Cafe + Studio) &mdash; Monthly P&amp;L</h3>
+  <div style="overflow-x:auto">
+  <table style="font-size:12px;">
+    <thead><tr><th data-th="เดือน">Month</th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;How busy the business is compared to its full potential. 47% means the business is running at less than half speed (because it just opened and it's still building up customers).&quot; data-tip-th=&quot;ธุรกิจใช้ศักยภาพจริงไปมากน้อยแค่ไหน 47% คือยังเดินได้ไม่ถึงครึ่ง เพราะเพิ่งเปิดและยังอยู่ช่วงสร้างฐานลูกค้า&quot;>ระดับดีมานด์</span>"><span class="tip" data-tip="How busy the business is compared to its full potential. 47% means the business is running at less than half speed (because it just opened and it's still building up customers).">Demand</span></th><th class="num" data-th="คาเฟ่">Cafe</th><th class="num" data-th="สตูดิโอ">Studio</th><th class="num" data-th="อีเวนต์">Events</th><th class="num" data-th="รายได้รวม">Total Rev</th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;Costs that go up when you sell more (ingredients, supplies). If you sell zero, these are zero.&quot; data-tip-th=&quot;ต้นทุนที่เพิ่มขึ้นตามยอดขาย (วัตถุดิบ ของใช้) ถ้าขายเป็นศูนย์ ต้นทุนนี้ก็เป็นศูนย์&quot;>ต้นทุนผันแปร</span>"><span class="tip" data-tip="Costs that go up when you sell more (ingredients, supplies). If you sell zero, these are zero.">Var Costs</span></th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;Costs you pay every month no matter what — rent, salaries, electricity. Even if zero customers come, you still pay these.&quot; data-tip-th=&quot;ค่าใช้จ่ายที่ต้องจ่ายทุกเดือนไม่ว่าจะเกิดอะไร ค่าเช่า เงินเดือน ค่าไฟ แม้ไม่มีลูกค้าเลยก็ยังต้องจ่าย&quot;>ต้นทุนคงที่</span>"><span class="tip" data-tip="Costs you pay every month no matter what — rent, salaries, electricity. Even if zero customers come, you still pay these.">Fixed</span></th><th class="num" data-th="<span class=&quot;tip&quot; data-tip=&quot;What's left after paying ALL costs (both variable and fixed). Positive = making money. Negative = losing money that month.&quot; data-tip-th=&quot;เงินที่เหลือหลังจ่ายต้นทุนทั้งหมด ทั้งต้นทุนผันแปรและต้นทุนคงที่ ถ้าเป็นบวกคือกำไร ถ้าเป็นลบคือขาดทุนในเดือนนั้น&quot;>กำไร</span>"><span class="tip" data-tip="What's left after paying ALL costs (both variable and fixed). Positive = making money. Negative = losing money that month.">Profit</span></th></tr></thead>
+    <tbody>
+      <tr><td data-th="ม.ค.">Jan</td><td class="num">47%</td><td class="num">104,399</td><td class="num">11,479</td><td class="num">8,735</td><td class="num">124,612</td><td class="num">43,743</td><td class="num">192,000</td><td class="num negative">-111,130</td></tr>
+      <tr><td data-th="ก.พ.">Feb</td><td class="num">63%</td><td class="num">126,830</td><td class="num">15,501</td><td class="num">11,796</td><td class="num">154,127</td><td class="num">53,976</td><td class="num">192,000</td><td class="num negative">-91,849</td></tr>
+      <tr><td data-th="มี.ค.">Mar</td><td class="num">74%</td><td class="num">166,386</td><td class="num">18,294</td><td class="num">13,921</td><td class="num">198,601</td><td class="num">69,715</td><td class="num">192,000</td><td class="num negative">-63,114</td></tr>
+      <tr><td data-th="เม.ย.">Apr</td><td class="num">79%</td><td class="num">167,859</td><td class="num">19,473</td><td class="num">14,818</td><td class="num">202,149</td><td class="num">70,878</td><td class="num">192,000</td><td class="num negative">-60,728</td></tr>
+      <tr><td data-th="พ.ค.">May</td><td class="num">80%</td><td class="num">183,282</td><td class="num">19,601</td><td class="num">14,916</td><td class="num">217,798</td><td class="num">76,499</td><td class="num">192,000</td><td class="num negative">-50,701</td></tr>
+      <tr><td data-th="มิ.ย.">Jun</td><td class="num">73%</td><td class="num">155,048</td><td class="num">17,987</td><td class="num">13,687</td><td class="num">186,722</td><td class="num">65,469</td><td class="num">192,000</td><td class="num negative">-70,746</td></tr>
+      <tr style="background:rgba(192,57,43,0.06)"><td data-th="ก.ค.">Jul</td><td class="num" style="color:var(--red-soft)">66%</td><td class="num">142,684</td><td class="num">16,142</td><td class="num">12,283</td><td class="num">171,109</td><td class="num">60,027</td><td class="num">192,000</td><td class="num negative">-80,919</td></tr>
+      <tr><td data-th="ส.ค.">Aug</td><td class="num">72%</td><td class="num">165,313</td><td class="num">17,679</td><td class="num">13,453</td><td class="num">196,446</td><td class="num">68,999</td><td class="num">192,000</td><td class="num negative">-64,553</td></tr>
+      <tr><td data-th="ก.ย.">Sep</td><td class="num">84%</td><td class="num">178,350</td><td class="num">20,690</td><td class="num">15,744</td><td class="num">214,784</td><td class="num">75,308</td><td class="num">192,000</td><td class="num negative">-52,524</td></tr>
+      <tr><td data-th="ต.ค.">Oct</td><td class="num">99%</td><td class="num">221,381</td><td class="num">24,341</td><td class="num">18,523</td><td class="num">264,245</td><td class="num">92,758</td><td class="num">192,000</td><td class="num negative">-20,513</td></tr>
+      <tr><td data-th="พ.ย.">Nov</td><td class="num">120%</td><td class="num">261,530</td><td class="num">29,466</td><td class="num">22,422</td><td class="num">313,418</td><td class="num">109,961</td><td class="num">192,000</td><td class="num positive">+11,456</td></tr>
+      <tr style="background:rgba(39,174,96,0.06)"><td data-th="ธ.ค.">Dec</td><td class="num" style="color:var(--green-soft)">127%</td><td class="num">276,308</td><td class="num">31,259</td><td class="num">23,787</td><td class="num">331,354</td><td class="num">116,244</td><td class="num">192,000</td><td class="num positive">+23,110</td></tr>
+      <tr class="total"><td data-th="ปีที่ 1">Year 1</td><td class="num"></td><td class="num">2,149,368</td><td class="num">241,912</td><td class="num">184,085</td><td class="num">2,575,365</td><td class="num">903,576</td><td class="num">2,304,000</td><td class="num negative">-632,211</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<hr>
+
+<!-- 5C. CONSTRUCTION & EQUIPMENT BREAKDOWN -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 05c">Section 05c</div>
+  <h2 data-th="รายละเอียดค่าก่อสร้างและอุปกรณ์">Construction &amp; Equipment Breakdown</h2>
+
+  <h3 data-th="ประมาณการค่าก่อสร้าง Phase 1 (2.8 ล้านบาท)">Phase 1 Construction Estimate (2.8M THB)</h3>
+  <table>
+    <thead><tr><th data-th="องค์ประกอบ">Component</th><th data-th="ขอบเขตงาน">Scope</th><th class="num" data-th="ค่าใช้จ่ายโดยประมาณ (บาท)">Est. Cost (THB)</th></tr></thead>
+    <tbody>
+      <tr><td data-th="โครงอาคารและงานโครงสร้าง">Building shell &amp; structure</td><td data-th="~85 ตร.ม. พื้นที่ปิด @ 28,000/ตร.ม.">~85 sqm enclosed @ 28K/sqm</td><td class="num">2,380,000</td></tr>
+      <tr><td data-th="ระบบประปา ระบายน้ำ และบ่อดักไขมัน">Plumbing, drainage, grease trap</td><td data-th="ครอบคลุมทั้งพื้นที่">Full site</td><td class="num">120,000</td></tr>
+      <tr><td data-th="ระบบไฟฟ้า + ติดตั้งแอร์">Electrical + AC installation</td><td data-th="แอร์ 3–4 ตัว">3–4 split units</td><td class="num">150,000</td></tr>
+      <tr><td data-th="จัดสวนและทำทางเดิน">Garden landscaping &amp; paths</td><td data-th="ใช้งานพื้นฐานได้ พื้นที่ประมาณ 200 ตร.ม.">Basic usability, ~200 sqm</td><td class="num">100,000</td></tr>
+      <tr><td data-th="กันสาด / เพอร์โกล่ากลางแจ้ง">Outdoor shade / pergola</td><td data-th="พื้นที่นั่งแบบมีหลังคา">Covered seating area</td><td class="num">50,000</td></tr>
+      <tr class="total"><td data-th="รวมงานก่อสร้าง">Total Construction</td><td></td><td class="num">2,800,000</td></tr>
+    </tbody>
+  </table>
+
+  <h3 data-th="ประมาณการค่าอุปกรณ์ Phase 1 (700,000 บาท)">Phase 1 Equipment Estimate (700K THB)</h3>
+  <table>
+    <thead><tr><th data-th="รายการ">Item</th><th class="num" data-th="ค่าใช้จ่ายโดยประมาณ (บาท)">Est. Cost (THB)</th></tr></thead>
+    <tbody>
+      <tr><td data-th="เครื่องเอสเปรสโซเชิงพาณิชย์ (2 หัวชง)">Commercial espresso machine (2-group)</td><td class="num">200,000–350,000</td></tr>
+      <tr><td data-th="เครื่องบดกาแฟ &times; 2">Grinder(s) &times; 2</td><td class="num">30,000–60,000</td></tr>
+      <tr><td data-th="เครื่องปั่นและอุปกรณ์ครัวขนาดเล็ก">Blenders, kitchen small appliances</td><td class="num">20,000–40,000</td></tr>
+      <tr><td data-th="ตู้เย็น / ตู้แช่ (หน้าร้าน + หลังร้าน)">Refrigeration (display + back storage)</td><td class="num">40,000–80,000</td></tr>
+      <tr><td data-th="เฟอร์นิเจอร์ (ในร้าน + กลางแจ้ง)">Furniture (indoor cafe + outdoor)</td><td class="num">80,000–150,000</td></tr>
+      <tr><td data-th="ระบบเสียง (คาเฟ่ + สตูดิโอ)">Sound system (cafe + studio)</td><td class="num">30,000–60,000</td></tr>
+      <tr><td data-th="อุปกรณ์โยคะ / เวลเนส">Yoga / wellness props</td><td class="num">20,000–40,000</td></tr>
+      <tr><td data-th="<span class=&quot;tip&quot; data-tip=&quot;Point of Sale — the system you use to take payments. The screen/tablet at the counter where customers pay and you track sales.&quot; data-tip-th=&quot;ระบบรับชำระเงิน หน้าจอ/แท็บเล็ตที่เคาน์เตอร์สำหรับรับเงินและติดตามยอดขาย&quot;>POS</span> อุปกรณ์หน้าร้าน"><span class="tip" data-tip="Point of Sale — the system you use to take payments. The screen/tablet at the counter where customers pay and you track sales.">POS</span> hardware</td><td class="num">15,000–30,000</td></tr>
+      <tr class="total"><td data-th="รวมค่าอุปกรณ์">Total Equipment</td><td class="num">~700,000</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warning" data-th="<strong>ตัวเลขเหล่านี้เป็นเพียงประมาณการก่อนขอราคา</strong> แผนงานถัดไปต้องไปเอาใบเสนอราคาจริงจากผู้รับเหมา 3 รายก่อนตัดสินใจลงทุน ค่าอุปกรณ์ต่างกันมากตามแบรนด์ โดยเฉพาะเครื่องเอสเปรสโซที่อาจอยู่ตั้งแต่ 150,000 บาท (มือสอง/ระดับกลาง) ไปจนถึง 500,000 บาท (La Marzocco ใหม่)"><strong>These are pre-bid estimates.</strong> The TODO plan includes getting 3 real contractor bids before committing capital. Equipment costs vary significantly by brand — the espresso machine alone ranges from 150K (used/mid-range) to 500K (La Marzocco new).</div>
+</div>
+
+<hr>
+
+<!-- 5D. ASSUMPTIONS & CONFIDENCE -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 05d">Section 05d</div>
+  <h2 data-th="สมมติฐานทั้งหมดและระดับความมั่นใจ">All Assumptions &amp; Confidence Ratings</h2>
+  <p data-th="ทุกตัวเลขในโมเดลนี้คือสมมติฐาน ด้านล่างคือการให้คะแนนว่าเรามั่นใจแค่ไหนในแต่ละตัว และต้องมีหลักฐานอะไรถึงจะปรับเปลี่ยนได้ ให้คะแนนร่วมกันโดย Claude &amp; Codex">Every number in this model is an assumption. Here is each one rated by how confident we are, and what evidence would improve it. Rated jointly by Claude &amp; Codex.</p>
+
+  <div style="display:flex;gap:16px;margin:20px 0;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:6px;font-size:13px"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--green-soft)"></span> <strong>HIGH</strong> &mdash; well-referenced, unlikely to be far off</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:13px" data-th="<div style=&quot;display:flex;align-items:center;gap:6px;font-size:13px&quot;><span style=&quot;display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--amber-soft)&quot;></span> <strong>ปานกลาง</strong> &mdash; เป็นตัวเลขที่สมเหตุสมผล แต่ขยับได้อีกราว 20–30%</div>"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--amber-soft)"></span> <strong>MEDIUM</strong> &mdash; reasonable estimate, could move 20–30%</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:13px" data-th="<div style=&quot;display:flex;align-items:center;gap:6px;font-size:13px&quot;><span style=&quot;display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--red-soft)&quot;></span> <strong>ต่ำ</strong> &mdash; ยังเป็นตัวตั้งต้น ต้องใช้ข้อมูลจริงมายืนยัน</div>"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--red-soft)"></span> <strong>LOW</strong> &mdash; placeholder, needs real data</div>
+  </div>
+
+  <h3 data-th="ค่าใช้จ่ายคงที่">Fixed Costs</h3>
+  <table style="font-size:13px;">
+    <thead><tr><th data-th="สมมติฐาน">Assumption</th><th class="num" data-th="ค่า">Value</th><th data-th="ระดับความมั่นใจ">Confidence</th><th data-th="อะไรจะช่วยให้แม่นขึ้น">What would improve it</th></tr></thead>
+    <tbody>
+      <tr><td data-th="<span class=&quot;tip&quot; data-tip=&quot;Not real rent you pay — it's a 'what if' number. If you COULD rent this land to someone else, what would they pay? We include it so the model doesn't trick us into thinking free land = free business.&quot; data-tip-th=&quot;ไม่ใช่ค่าเช่าที่จ่ายจริง แต่เป็นตัวเลขสมมติว่าถ้าปล่อยที่ดินนี้ให้คนอื่นเช่า จะได้เท่าไร เราใส่ไว้เพื่อไม่ให้โมเดลหลอกตัวเองว่าที่ดินฟรี = ธุรกิจฟรี&quot;>ค่าเช่าทางบัญชี</span>"><span class="tip" data-tip="Not real rent you pay — it's a 'what if' number. If you COULD rent this land to someone else, what would they pay? We include it so the model doesn't trick us into thinking free land = free business.">Imputed rent</span></td><td class="num">20K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="ใช้เฉพาะมุมมองเจ้าของที่ดิน ต้องเทียบกับทางเลือกใช้ที่ดินแบบอื่น">Owner-case only; benchmark alternative land use</td></tr>
+      <tr><td data-th="บาริสต้า (&times;2)">Baristas (&times;2)</td><td class="num">36K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="เทียบเงินเดือนตลาดหัวหิน หรือมีกรอบค่าจ้างที่ตกลงจริง">Hua Hin hiring comps or signed pay bands</td></tr>
+      <tr><td data-th="หัวหน้าคาเฟ่">Cafe lead</td><td class="num">28K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีโครงสร้างทีมจริงและตัวเลขเงินเดือนจากผู้สมัคร">Real org chart + candidate salary quotes</td></tr>
+      <tr><td data-th="แอดมินพาร์ตไทม์">Part-time admin</td><td class="num">12K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="กำหนดชั่วโมงงานและค่าจ้างของบทบาทนี้ให้ชัด">Scope role to hours and pay</td></tr>
+      <tr><td data-th="ค่าสาธารณูปโภค">Utilities</td><td class="num">32K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="คำนวณโหลดอุปกรณ์หรือเทียบบิลจากร้านใกล้เคียง">Appliance load estimates or comparable bills</td></tr>
+      <tr><td data-th="การตลาด (ปีแรก)">Marketing (Y1)</td><td class="num">35K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีแผนเปิดจริงและงบสื่อที่ชัดเจน">Actual launch plan and media budget</td></tr>
+      <tr><td data-th="ค่าดูแลสถานที่">Maintenance</td><td class="num">18K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีใบเสนอราคาจากคนดูแลสวน ช่าง และผู้ให้บริการอุปกรณ์">Landscaper, handyman, equipment service quotes</td></tr>
+      <tr><td data-th="ทำความสะอาด">Cleaning</td><td class="num">8K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีใบเสนอราคาจากผู้ให้บริการในพื้นที่">Local vendor quote</td></tr>
+      <tr><td data-th="ซอฟต์แวร์/<span class=&quot;tip&quot; data-tip=&quot;Point of Sale — the system you use to take payments. The screen/tablet at the counter where customers pay and you track sales.&quot; data-tip-th=&quot;ระบบรับชำระเงิน หน้าจอ/แท็บเล็ตที่เคาน์เตอร์สำหรับรับเงินและติดตามยอดขาย&quot;>POS</span>">Software/<span class="tip" data-tip="Point of Sale — the system you use to take payments. The screen/tablet at the counter where customers pay and you track sales.">POS</span></td><td class="num">7K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="เลือกระบบที่จะใช้และเช็กราคาสมัครใช้งานจริง">Select stack, get actual subscriptions</td></tr>
+      <tr><td data-th="ใบอนุญาต/ประกัน">Licensing/insurance</td><td class="num">7K/mo</td><td data-th="<span style=&quot;color:var(--red-soft)&quot;>&#9679;</span> ต่ำ"><span style="color:var(--red-soft)">&#9679;</span> LOW</td><td data-th="มีใบเสนอราคาประกันและรายการใบอนุญาตที่ต้องขอ">Broker quotes and permit list</td></tr>
+      <tr><td data-th="บัญชี">Accounting</td><td class="num">5K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีข้อเสนอราคาจากสำนักงานบัญชีในพื้นที่">Local accountant proposal</td></tr>
+      <tr><td data-th="อาหารพนักงาน/ยูนิฟอร์ม">Staff meals/uniforms</td><td class="num">4K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="กำหนดนโยบายและได้ราคาจากผู้ขายจริง">Policy details + vendor pricing</td></tr>
+      <tr><td data-th="ประกันสังคม">Social security</td><td class="num">3K/mo</td><td data-th="<span style=&quot;color:var(--green-soft)&quot;>&#9679;</span> สูง"><span style="color:var(--green-soft)">&#9679;</span> HIGH</td><td data-th="คำนวณตามกฎหมายตรงตัว: 5% เพดาน 750 บาท/คน">Mechanically calculated: 5% capped @ 750/person</td></tr>
+      <tr><td data-th="ขยะ/บ่อดักไขมัน">Waste/grease trap</td><td class="num">3K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีใบเสนอราคาจากผู้รับเก็บและกำจัดขยะ">Waste contractor quotes</td></tr>
+      <tr><td data-th="กำจัดแมลงและสัตว์รบกวน">Pest control</td><td class="num">2.5K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีใบเสนอราคาสัญญาบริการจริง">Service contract quote</td></tr>
+      <tr><td data-th="ความปลอดภัย (CCTV)">Security (CCTV)</td><td class="num">1.5K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีขอบเขตงานความปลอดภัยและใบเสนอราคา">Security scope + quote</td></tr>
+      <tr><td data-th="ค่าลิขสิทธิ์เพลง">Music licensing</td><td class="num">1K/mo</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="ยืนยันอัตราค่าลิขสิทธิ์เพลงกับ MCT">MCT fee schedule verification</td></tr>
+    </tbody>
+  </table>
+
+  <h3 data-th="งานก่อสร้าง (Phase 1)">Construction (Phase 1)</h3>
+  <table style="font-size:13px;">
+    <thead><tr><th data-th="สมมติฐาน">Assumption</th><th class="num" data-th="ค่า">Value</th><th data-th="ระดับความมั่นใจ">Confidence</th><th data-th="อะไรจะช่วยให้แม่นขึ้น">What would improve it</th></tr></thead>
+    <tbody>
+      <tr><td data-th="งานก่อสร้างพื้นที่ปิด">Enclosed build</td><td class="num">85sqm @ 28K</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="ใบเสนอราคาผู้รับเหมา 3 ราย + ขอบเขตงาน">3 contractor bids + scope sheet</td></tr>
+      <tr><td data-th="งานสวน/งานภายนอก">Garden/outdoor works</td><td class="num">~420K</td><td data-th="<span style=&quot;color:var(--red-soft)&quot;>&#9679;</span> ต่ำ"><span style="color:var(--red-soft)">&#9679;</span> LOW</td><td data-th="มีแบบภูมิทัศน์และใบเสนอราคา">Landscape drawings + quotes</td></tr>
+      <tr><td data-th="ค่าอุปกรณ์รวม">Equipment total</td><td class="num">700K</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีใบเสนอราคาอุปกรณ์แบบแยกรายการ">Itemized equipment quotes</td></tr>
+      <tr><td data-th="<span class=&quot;tip&quot; data-tip=&quot;Cash saved up to pay bills while the business is still getting started and not yet making enough money. Think of it as a safety cushion.&quot; data-tip-th=&quot;เงินสำรองไว้จ่ายค่าใช้จ่ายตอนที่ร้านเพิ่งเปิดและยังไม่ได้กำไรพอ เหมือนเงินเบาะรองรับนั่นเอง&quot;>เงินทุนหมุนเวียน</span>"><span class="tip" data-tip="Cash saved up to pay bills while the business is still getting started and not yet making enough money. Think of it as a safety cushion.">Working capital</span></td><td class="num">1.2M</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีแผนกระแสเงินสดละเอียดและตารางก่อนเปิดร้าน">Detailed cash bridge + pre-opening schedule</td></tr>
+    </tbody>
+  </table>
+
+  <h3 data-th="สมมติฐานรายได้ (กรณีฐาน)">Revenue Assumptions (Base Case)</h3>
+  <table style="font-size:13px;">
+    <thead><tr><th data-th="สมมติฐาน">Assumption</th><th class="num" data-th="ค่า">Value</th><th data-th="ระดับความมั่นใจ">Confidence</th><th data-th="อะไรจะช่วยให้แม่นขึ้น">What would improve it</th></tr></thead>
+    <tbody>
+      <tr><td data-th="จำนวนลูกค้าวันธรรมดา <span class=&quot;tip&quot; data-tip=&quot;Number of customers served per day. One 'cover' = one paying customer.&quot; data-tip-th=&quot;จำนวนลูกค้าที่ใช้บริการต่อวัน 1 cover เท่ากับลูกค้าที่จ่ายเงิน 1 คน&quot;>covers</span>">Weekday <span class="tip" data-tip="Number of customers served per day. One 'cover' = one paying customer.">covers</span></td><td class="num">40/day</td><td data-th="<span style=&quot;color:var(--red-soft)&quot;>&#9679;</span> ต่ำ"><span style="color:var(--red-soft)">&#9679;</span> LOW</td><td data-th="ทำป๊อปอัพ นับคนเดินผ่าน และสังเกตร้านเทียบเคียง">Pop-ups, footfall counts, comp observation</td></tr>
+      <tr><td data-th="จำนวนลูกค้าวันหยุด <span class=&quot;tip&quot; data-tip=&quot;Number of customers served per day. One 'cover' = one paying customer.&quot; data-tip-th=&quot;จำนวนลูกค้าที่ใช้บริการต่อวัน 1 cover เท่ากับลูกค้าที่จ่ายเงิน 1 คน&quot;>covers</span>">Weekend <span class="tip" data-tip="Number of customers served per day. One 'cover' = one paying customer.">covers</span></td><td class="num">85/day</td><td data-th="<span style=&quot;color:var(--red-soft)&quot;>&#9679;</span> ต่ำ"><span style="color:var(--red-soft)">&#9679;</span> LOW</td><td data-th="มีข้อมูลคนเดินผ่านและอัตราแปลงเป็นลูกค้าจริงในวันหยุด">Real weekend footfall + conversion data</td></tr>
+      <tr><td data-th="คาเฟ่ <span class=&quot;tip&quot; data-tip=&quot;Average amount one customer spends per visit. If 10 people spend a total of 1,800 THB, the average ticket is 180 THB.&quot; data-tip-th=&quot;ยอดเฉลี่ยที่ลูกค้า 1 คนจ่ายต่อครั้ง ถ้า 10 คนจ่ายรวม 1,800 บาท ยอดเฉลี่ยต่อคนคือ 180 บาท&quot;>ยอดใช้จ่ายเฉลี่ย</span>">Cafe <span class="tip" data-tip="Average amount one customer spends per visit. If 10 people spend a total of 1,800 THB, the average ticket is 180 THB.">avg ticket</span></td><td class="num">180 THB</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="ทดสอบราคาเมนูจริงและเทียบกับร้านในตลาดเดียวกัน">Test-menu pricing + local comp benchmarks</td></tr>
+      <tr><td data-th="อัตราเปลี่ยนเป็นลูกค้า BAO Jai">BAO Jai conversion</td><td class="num">8%</td><td data-th="<span style=&quot;color:var(--red-soft)&quot;>&#9679;</span> ต่ำ"><span style="color:var(--red-soft)">&#9679;</span> LOW</td><td data-th="ทดลองแบบป๊อปอัพหรือโปรโตไทป์ที่เก็บเงินจริง">Paid pop-up or prototype test</td></tr>
+      <tr><td data-th="BAO Jai <span class=&quot;tip&quot; data-tip=&quot;Average amount one customer spends per visit. If 10 people spend a total of 1,800 THB, the average ticket is 180 THB.&quot; data-tip-th=&quot;ยอดเฉลี่ยที่ลูกค้า 1 คนจ่ายต่อครั้ง ถ้า 10 คนจ่ายรวม 1,800 บาท ยอดเฉลี่ยต่อคนคือ 180 บาท&quot;>ยอดใช้จ่ายเฉลี่ย</span>">BAO Jai <span class="tip" data-tip="Average amount one customer spends per visit. If 10 people spend a total of 1,800 THB, the average ticket is 180 THB.">avg ticket</span></td><td class="num">170 THB</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="ผลลัพธ์จากการตั้งราคาในป๊อปอัพจริง">Pop-up pricing results</td></tr>
+      <tr><td data-th="จำนวนคลาสสตูดิโอต่อเดือน">Studio sessions/mo</td><td class="num">22</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีตารางคลาสและผู้สอนที่ยืนยันแล้ว">Committed timetable + facilitator availability</td></tr>
+      <tr><td data-th="ความจุของสตูดิโอ">Studio capacity</td><td class="num">10</td><td data-th="<span style=&quot;color:var(--green-soft)&quot;>&#9679;</span> สูง"><span style="color:var(--green-soft)">&#9679;</span> HIGH</td><td data-th="ตัดสินใจผังห้องจริงแล้ว">Physical room design decision</td></tr>
+      <tr><td data-th="สตูดิโอ <span class=&quot;tip&quot; data-tip=&quot;How full the class is compared to maximum. If a studio fits 10 people and 7 show up, the fill rate is 70%.&quot; data-tip-th=&quot;คลาสเต็มแค่ไหนเทียบกับจำนวนที่นั่งสูงสุด ถ้าสตูดิโอจุ 10 คน มาจริง 7 คน fill rate คือ 70%&quot;>อัตราการเต็มคลาส</span>">Studio <span class="tip" data-tip="How full the class is compared to maximum. If a studio fits 10 people and 7 show up, the fill rate is 70%." data-tip-th="คลาสเต็มแค่ไหนเทียบกับจำนวนที่นั่งสูงสุด ถ้าสตูดิโอจุ 10 คน มาจริง 7 คน fill rate คือ 70%">fill rate</span></td><td class="num">65%</td><td data-th="<span style=&quot;color:var(--red-soft)&quot;>&#9679;</span> ต่ำ"><span style="color:var(--red-soft)">&#9679;</span> LOW</td><td data-th="มีข้อมูลจากคลาสทดลองหรือจากพาร์ตเนอร์ผู้สอน">Trial classes or facilitator partner data</td></tr>
+      <tr><td data-th="สตูดิโอ <span class=&quot;tip&quot; data-tip=&quot;Average amount one customer spends per visit. If 10 people spend a total of 1,800 THB, the average ticket is 180 THB.&quot; data-tip-th=&quot;ยอดเฉลี่ยที่ลูกค้า 1 คนจ่ายต่อครั้ง ถ้า 10 คนจ่ายรวม 1,800 บาท ยอดเฉลี่ยต่อคนคือ 180 บาท&quot;>ราคาต่อคนเฉลี่ย</span>">Studio <span class="tip" data-tip="Average amount one customer spends per visit. If 10 people spend a total of 1,800 THB, the average ticket is 180 THB.">avg ticket</span></td><td class="num">700 THB</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="เทียบราคาคู่แข่งและดูว่าลูกค้ายอมจ่ายแค่ไหน">Competitor pricing + willingness-to-pay data</td></tr>
+      <tr><td data-th="ส่วนแบ่งรายได้ของ BAO จากสตูดิโอ">BAO studio share</td><td class="num">40%</td><td data-th="<span style=&quot;color:var(--green-soft)&quot;>&#9679;</span> สูง"><span style="color:var(--green-soft)">&#9679;</span> HIGH</td><td data-th="กำหนดไว้แล้วใน concept bible (แบ่ง 60/40)">Defined in concept bible (60/40 split)</td></tr>
+      <tr><td data-th="จำนวนอีเวนต์พรีเมียมต่อเดือน">Premium events/mo</td><td class="num">2</td><td data-th="<span style=&quot;color:var(--red-soft)&quot;>&#9679;</span> ต่ำ"><span style="color:var(--red-soft)">&#9679;</span> LOW</td><td data-th="มีรายชื่อวิทยากรและปฏิทินอีเวนต์จริง">Facilitator pipeline + event calendar</td></tr>
+      <tr><td data-th="อีเวนต์ <span class=&quot;tip&quot; data-tip=&quot;What percentage of available spots actually get sold. 75% sell-through on 15 spots means 11-12 tickets sold.&quot; data-tip-th=&quot;เปอร์เซ็นต์ของที่นั่งที่ขายได้จริง 75% ของ 15 ที่นั่ง = ขายได้ 11-12 ใบ&quot;>อัตราขายได้จริง</span>">Event <span class="tip" data-tip="What percentage of available spots actually get sold. 75% sell-through on 15 spots means 11-12 tickets sold.">sell-through</span></td><td class="num">75%</td><td data-th="<span style=&quot;color:var(--red-soft)&quot;>&#9679;</span> ต่ำ"><span style="color:var(--red-soft)">&#9679;</span> LOW</td><td data-th="มีการทดลองจัดอีเวนต์ที่เก็บเงินจริง">Paid pilot events</td></tr>
+      <tr><td data-th="ราคาบัตรอีเวนต์">Event ticket</td><td class="num">2,500 THB</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีข้อมูลยอดขายอีเวนต์ทดลองหรือหลักฐานจากคู่แข่ง">Pilot-event sales or competitor evidence</td></tr>
+      <tr><td data-th="จำนวนร้านค้าตลาดนัด">Flea vendors</td><td class="num">14/mo</td><td data-th="<span style=&quot;color:var(--red-soft)&quot;>&#9679;</span> ต่ำ"><span style="color:var(--red-soft)">&#9679;</span> LOW</td><td data-th="คุยกับร้านค้าและมีคนแสดงความสนใจจริง">Vendor outreach + expressions of interest</td></tr>
+      <tr><td data-th="ค่าธรรมเนียมร้านค้า">Vendor fee</td><td class="num">800 THB</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="เทียบกับค่าธรรมเนียมตลาดคล้ายกันหรือฟัง feedback จากผู้ขาย">Comparable market fees or vendor feedback</td></tr>
+    </tbody>
+  </table>
+
+  <h3 data-th="ต้นทุนผันแปร">Variable Costs</h3>
+  <table style="font-size:13px;">
+    <thead><tr><th data-th="สมมติฐาน">Assumption</th><th class="num" data-th="ค่า">Value</th><th data-th="ระดับความมั่นใจ">Confidence</th><th data-th="อะไรจะช่วยให้แม่นขึ้น">What would improve it</th></tr></thead>
+    <tbody>
+      <tr><td data-th="<span class=&quot;tip&quot; data-tip=&quot;How much of each baht of cafe sales goes to ingredients and supplies. 36% means for every 100 THB sold, 36 THB goes to coffee beans, milk, cups, etc.&quot; data-tip-th=&quot;ทุกๆ บาทที่ขายได้ ต้องจ่ายค่าวัตถุดิบเท่าไหร่ 36% = ขายได้ 100 บาท จ่ายค่าเมล็ดกาแฟ นม แก้ว 36 บาท&quot;>ต้นทุนขายคาเฟ่</span>"><span class="tip" data-tip="How much of each baht of cafe sales goes to ingredients and supplies. 36% means for every 100 THB sold, 36 THB goes to coffee beans, milk, cups, etc." data-tip-th="ทุกๆ บาทที่ขายได้ ต้องจ่ายค่าวัตถุดิบเท่าไหร่ 36% = ขายได้ 100 บาท จ่ายค่าเมล็ดกาแฟ นม แก้ว 36 บาท">Cafe COGS</span></td><td class="num">36%</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="ทำต้นทุนสูตรอาหาร เช็กราคาซัพพลายเออร์ และดูข้อมูลของเสีย">Recipe costing, supplier quotes, spoilage data</td></tr>
+      <tr><td data-th="<span class=&quot;tip&quot; data-tip=&quot;Cost of activity kit materials — mystery kits, drawing supplies, typewriter ribbons, etc.&quot; data-tip-th=&quot;ต้นทุนอุปกรณ์กิจกรรม ชุดปริศนา อุปกรณ์วาดรูป ผ้าหมึกเครื่องพิมพ์ดีด ฯลฯ&quot;>ต้นทุนขาย BAO Jai</span>"><span class="tip" data-tip="Cost of activity kit materials — mystery kits, drawing supplies, typewriter ribbons, etc." data-tip-th="ต้นทุนอุปกรณ์กิจกรรม ชุดปริศนา อุปกรณ์วาดรูป ผ้าหมึกเครื่องพิมพ์ดีด ฯลฯ">BAO Jai COGS</span></td><td class="num">25%</td><td data-th="<span style=&quot;color:var(--red-soft)&quot;>&#9679;</span> ต่ำ"><span style="color:var(--red-soft)">&#9679;</span> LOW</td><td data-th="ทำต้นทุนวัตถุดิบต่อกิจกรรมให้ครบ">Bill of materials per activity</td></tr>
+      <tr><td data-th="ต้นทุนผันแปรของสตูดิโอ">Studio variable</td><td class="num">8%</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="คำนวณของใช้สิ้นเปลืองและค่าซักต่อคลาส">Per-session consumables + laundry costing</td></tr>
+      <tr><td data-th="ต้นทุนผันแปรของอีเวนต์">Events variable</td><td class="num">60%</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีแบบฟอร์มกำไรขาดทุนของอีเวนต์แต่ละรูปแบบ">Event P&amp;L template by format</td></tr>
+      <tr><td data-th="ตลาดนัด">Flea market</td><td class="num">10%</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีต้นทุนพนักงานและเก็บพื้นที่จากการทดลองจริง">Actual staffing/cleanup cost from trial</td></tr>
+    </tbody>
+  </table>
+
+  <h3 data-th="กลไกของโมเดล">Model Mechanics</h3>
+  <table style="font-size:13px;">
+    <thead><tr><th data-th="สมมติฐาน">Assumption</th><th class="num" data-th="ค่า">Value</th><th data-th="ระดับความมั่นใจ">Confidence</th><th data-th="อะไรจะช่วยให้แม่นขึ้น">What would improve it</th></tr></thead>
+    <tbody>
+      <tr><td data-th="เส้นไต่ระดับลูกค้าในปีแรก">Year 1 ramp curve</td><td class="num">40%&rarr;100%</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีข้อมูลจากร้านหรือพื้นที่เปิดใหม่ในหัวหินที่เทียบเคียงได้">Data from comparable Hua Hin openings</td></tr>
+      <tr><td data-th="จุดต่ำสุดของฤดูกาล (ก.ค.)">Seasonality trough (Jul)</td><td class="num">0.70&times;</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีข้อมูลท่องเที่ยวท้องถิ่นและยอดขายรายเดือนของธุรกิจเทียบเคียง">Local tourism + comp monthly sales curves</td></tr>
+      <tr><td data-th="จุดสูงสุดของฤดูกาล (ธ.ค.)">Seasonality peak (Dec)</td><td class="num">1.22&times;</td><td data-th="<span style=&quot;color:var(--amber-soft)&quot;>&#9679;</span> ปานกลาง"><span style="color:var(--amber-soft)">&#9679;</span> MEDIUM</td><td data-th="มีข้อมูลดีมานด์รายเดือนของตลาด">Monthly market demand data</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight" data-th="<strong>สรุป:</strong> มีสมมติฐานที่มั่นใจสูง 3 รายการ (คำนวณได้ตรงตัว) มั่นใจปานกลาง 27 รายการ (สมเหตุสมผลแต่ยังต้องมีใบเสนอราคา) และมั่นใจต่ำ 14 รายการ (ต้องใช้ข้อมูลตลาดจริง) โดยรายการที่มั่นใจต่ำ &mdash; โดยเฉพาะจำนวนลูกค้าวันธรรมดา <span class=&quot;tip&quot; data-tip=&quot;How full the class is compared to maximum. If a studio fits 10 people and 7 show up, the fill rate is 70%.&quot; data-tip-th=&quot;คลาสเต็มแค่ไหนเทียบกับจำนวนที่นั่งสูงสุด ถ้าสตูดิโอจุ 10 คน มาจริง 7 คน fill rate คือ 70%&quot;>fill rate</span> ของสตูดิโอ และความถี่ของอีเวนต์ &mdash; คือสิ่งที่แผนทดสอบใน Section 9 ตั้งใจจะพิสูจน์">
+    <strong>Summary:</strong> 3 assumptions rated HIGH (mechanically derived), 27 rated MEDIUM (reasonable but need quotes), 14 rated LOW (need real market data). The LOW-rated items &mdash; especially weekday covers, studio <span class="tip" data-tip="How full the class is compared to maximum. If a studio fits 10 people and 7 show up, the fill rate is 70%.">fill rate</span>, and event frequency &mdash; are exactly what the validation plan in Section 9 is designed to test.
+  </div>
+</div>
+
+<hr>
+
+<!-- 6. YEAR 1 RESULTS -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 06">Section 06</div>
+  <h2 data-th="ผลประกอบการปีที่ 1">Year 1 Financial Results</h2>
+
+  <p data-th="โมเดลนี้สมมติให้ธุรกิจค่อย ๆ <strong>ไต่ระดับลูกค้า <span class=&quot;tip&quot; data-tip=&quot;How quickly the business goes from empty (just opened, nobody knows about it) to its normal customer level. Most new places take 6-12 months to reach full speed.&quot; data-tip-th=&quot;ธุรกิจไปจากว่างเปล่า (เพิ่งเปิด ยังไม่มีใครรู้จัก) ถึงระดับลูกค้าปกติเร็วแค่ไหน ร้านใหม่ส่วนใหญ่ใช้เวลา 6-12 เดือนกว่าจะเต็มที่&quot;>ramp</span></strong> (เดือนแรกทำได้ 40% ของศักยภาพ และขึ้นถึง 100% ในเดือนที่ 11) และมีผลของ <strong>ฤดูกาลในหัวหิน <span class=&quot;tip&quot; data-tip=&quot;How customer traffic changes with the time of year. Hua Hin gets more visitors in cool season (Nov-Feb) and fewer in rainy season (Jun-Sep).&quot; data-tip-th=&quot;จำนวนลูกค้าเปลี่ยนไปตามฤดูกาลอย่างไร หัวหินมีคนเที่ยวมากช่วงหนาว (พ.ย.-ก.พ.) และน้อยลงช่วงฝน (มิ.ย.-ก.ย.)&quot;>seasonality</span></strong> (มิ.ย.–ก.ย. ลดลง 12–28% และเดือนก.ค. เหลือ 70% ของระดับปกติ)">The model includes a <strong>slow <span class="tip" data-tip="How quickly the business goes from empty (just opened, nobody knows about it) to its normal customer level. Most new places take 6-12 months to reach full speed." data-tip-th="ธุรกิจไปจากว่างเปล่า (เพิ่งเปิด ยังไม่มีใครรู้จัก) ถึงระดับลูกค้าปกติเร็วแค่ไหน ร้านใหม่ส่วนใหญ่ใช้เวลา 6-12 เดือนกว่าจะเต็มที่">ramp</span></strong> (40% capacity in month 1, reaching 100% by month 11) and <strong>Hua Hin <span class="tip" data-tip="How customer traffic changes with the time of year. Hua Hin gets more visitors in cool season (Nov-Feb) and fewer in rainy season (Jun-Sep).">seasonality</span></strong> (Jun–Sep drops 12–28%, July at 70% of normal).</p>
+
+  <h3 data-th="ภาพรวมผลลัพธ์แบบสร้างเต็มรูปแบบ">Full Build Scenarios</h3>
+  <table>
+    <thead><tr><th data-th="สถานการณ์">Scenario</th><th class="num" data-th="รายได้ปีที่ 1">Year 1 Revenue</th><th class="num" data-th="กำไรปีที่ 1">Year 1 Profit</th><th data-th="ข้อสรุป">Verdict</th></tr></thead>
+    <tbody>
+      <tr><td data-th="แย่กว่าคาด">Pessimistic</td><td class="num">2.27M</td><td class="num negative">-1.19M</td><td data-th="กินเงินสำรองเร็ว">Burns through buffer</td></tr>
+      <tr><td data-th="กรณีฐาน">Base</td><td class="num">4.11M</td><td class="num neutral">-16K</td><td data-th="แตะ <span class=&quot;tip&quot; data-tip=&quot;The point where the business makes exactly enough money to cover all its costs — not making money yet, but not losing money either.&quot; data-tip-th=&quot;จุดที่ธุรกิจทำรายได้พอดีกับค่าใช้จ่ายทั้งหมด ยังไม่ได้กำไร แต่ก็ไม่ขาดทุน&quot;>จุดคุ้มทุน</span> แบบเฉียดมาก">Razor-thin <span class="tip" data-tip="The point where the business makes exactly enough money to cover all its costs — not making money yet, but not losing money either." data-tip-th="จุดที่ธุรกิจทำรายได้พอดีกับค่าใช้จ่ายทั้งหมด ยังไม่ได้กำไร แต่ก็ไม่ขาดทุน">breakeven</span></td></tr>
+      <tr><td data-th="ดีกว่าคาด">Optimistic</td><td class="num">6.45M</td><td class="num positive">+1.49M</td><td data-th="ต้องพิสูจน์ดีมานด์ก่อนถึงจะเกิดขึ้นได้">Requires validated demand</td></tr>
+    </tbody>
+  </table>
+
+  <h3 data-th="Phase 1 &mdash; แนะนำ">Phase 1 &mdash; Recommended</h3>
+  <div class="cards">
+    <div class="card recommended">
+      <div class="label rec" data-th="&#10003; แนะนำ">&#10003; Recommended</div>
+      <div class="value" data-th="4.7 ล้าน">4.7M</div>
+      <div class="detail" data-th="เงินลงทุนรวมที่ต้องใช้<br>
+        <span style=&quot;color:var(--muted)&quot;>เทียบกับ 7.8 ล้าน ถ้าสร้างเต็มรูปแบบ</span>">
+        Total capital needed<br>
+        <span style="color:var(--muted)">vs 7.8M full build</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="label" data-th="ขาดทุนปีที่ 1">Year 1 Loss</div>
+      <div class="value" style="color:var(--red-soft)" data-th="-632,000">-632K</div>
+      <div class="detail" data-th="รองรับได้ด้วยเงินสำรอง 1.2 ล้าน<br>
+        <span style=&quot;color:var(--muted)&quot;>เหลือประมาณ 568,000 บาท</span>">
+        Covered by 1.2M buffer<br>
+        <span style="color:var(--muted)">~568K remaining</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="label" data-th="เดือนแรกที่คุ้มทุน">First Breakeven Month</div>
+      <div class="value" data-th="พ.ย.">Nov</div>
+      <div class="detail" data-th="เดือนที่ 11 ของการดำเนินงาน">Month 11 of operations</div>
+    </div>
+    <div class="card">
+      <div class="label" data-th="แนวโน้มปีที่ 2">Year 2 Trajectory</div>
+      <div class="value" style="font-size:24px;color:var(--green-light)" data-th="พ้นจุดคุ้มทุน">Breakeven+</div>
+      <div class="detail" data-th="ถ้าดีมานด์ยืนได้ตลอดปีแรก">If demand holds through first year</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- 7. HONEST ASSESSMENT -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 07">Section 07</div>
+  <h2 data-th="การประเมินแบบตรงไปตรงมา">The Honest Assessment</h2>
+
+  <h3 data-th="สิ่งที่ไปได้ดี">What works</h3>
+  <ul class="checklist">
+    <li data-th="<strong style=&quot;color:var(--green)&quot;>ที่ดินครอบครัวคือข้อได้เปรียบที่สุด</strong> เพราะไม่ต้องมีเงินสดไหลออกกับต้นทุนก้อนใหญ่ที่สุดอย่างค่าเช่า ถ้าเป็นพื้นที่เช่าที่ใกล้เคียงกัน อาจเพิ่มภาระอีก 80,000–135,000 บาทต่อเดือน จนแม้แต่กรณีดีกว่าคาดก็ยังเฉียดมาก"><strong style="color:var(--green)">Family land is the biggest advantage.</strong> No rent means no cash drain on the largest overhead line. A comparable leased space could add 80–135K THB/month, turning even the optimistic scenario marginal.</li>
+    <li data-th="<strong style=&quot;color:var(--green)&quot;>โมเดลที่ให้คาเฟ่นำยังพอไปได้</strong> ถ้ายอดใช้จ่ายเฉลี่ยอยู่ที่ 180 บาท และมีคนเข้าร้านในระดับเหมาะสม คาเฟ่เพียงส่วนเดียวก็แบกต้นทุนหลักได้เกือบทั้งหมด"><strong style="color:var(--green)">The cafe-first model is viable.</strong> At 180 THB average ticket with decent foot traffic, the cafe alone can carry most of the overhead.</li>
+    <li data-th="<strong style=&quot;color:var(--green)&quot;>เงินลงทุน Phase 1 (4.7 ล้าน) ยังพอรับได้</strong> และช่วยจำกัดความเสี่ยงขาลงให้อยู่ในระดับที่ยังเอาตัวรอดได้"><strong style="color:var(--green)">Phase 1 capital (4.7M) is manageable</strong> and limits downside exposure to a survivable level.</li>
+  </ul>
+
+  <h3 data-th="สิ่งที่ยังเสี่ยง">What is risky</h3>
+  <ul class="checklist">
+    <li data-th="<strong style=&quot;color:var(--red-soft)&quot;>ลูกค้าวันธรรมดาคือตัวชี้เป็นชี้ตาย</strong> โมเดลกรณีฐานตั้งไว้ที่ 40 คน/วันธรรมดา ถ้าทำได้แค่ 22 คนแบบกรณีแย่ ธุรกิจจะขาดทุนเกิน 1 ล้านบาทต่อปี เรื่องนี้ต้องพิสูจน์ให้ได้ก่อนเริ่มก่อสร้าง"><strong style="color:var(--red-soft)">Weekday traffic is the make-or-break variable.</strong> The model assumes 40 weekday covers (base). If it's 22 (pessimistic), the business loses over 1M/year. This must be validated before building.</li>
+    <li data-th="<strong style=&quot;color:var(--red-soft)&quot;>เศรษฐศาสตร์ของสตูดิโอยังค่อนข้างบาง</strong> หลังแบ่งรายได้ให้ผู้สอน 60/40 แล้ว BAO เหลือเพียง 280 บาทต่อคน ต้องมี <span class=&quot;tip&quot; data-tip=&quot;How full the class is compared to maximum. If a studio fits 10 people and 7 show up, the fill rate is 70%.&quot; data-tip-th=&quot;คลาสเต็มแค่ไหนเทียบกับจำนวนที่นั่งสูงสุด ถ้าสตูดิโอจุ 10 คน มาจริง 7 คน fill rate คือ 70%&quot;>fill rate</span> เกิน 55% อย่างสม่ำเสมอถึงจะมีน้ำหนัก"><strong style="color:var(--red-soft)">Studio economics are thin.</strong> After the 60/40 facilitator split, BAO keeps only 280 THB per person. Needs consistent 55%+ <span class="tip" data-tip="How full the class is compared to maximum. If a studio fits 10 people and 7 show up, the fill rate is 70%.">fill rate</span>s to matter.</li>
+    <li data-th="<strong style=&quot;color:var(--red-soft)&quot;>อีเวนต์เป็นรายได้เพิ่ม ไม่ใช่ฐานธุรกิจหลัก</strong> หลังหักค่าวิทยากรและค่าใช้จ่ายแล้ว BAO เหลือสุทธิประมาณ 40% ของรายได้บัตร แถมยังขึ้นกับสภาพอากาศและไม่ได้เกิดถี่มาก"><strong style="color:var(--red-soft)">Events are upside, not a foundation.</strong> After facilitator costs and expenses, BAO nets ~40% of ticket revenue. Weather-dependent and low-frequency.</li>
+    <li data-th="<strong style=&quot;color:var(--red-soft)&quot;>พื้นที่ 135 ตร.ม. เป็นข้อจำกัดจริง</strong> การออกแบบให้คุ้มพื้นที่ไม่ใช่ทางเลือก แต่เป็นสิ่งจำเป็น เพราะแทบไม่มีพื้นที่ให้เผื่อเสีย"><strong style="color:var(--red-soft)">135 sqm is a real constraint.</strong> Efficient design is not optional &mdash; there is no room for waste.</li>
+    <li data-th="<strong style=&quot;color:var(--red-soft)&quot;>ปีแรกยังขาดทุนในทุกกรณีที่สมเหตุสมผล</strong> ธุรกิจต้องผ่านปีแรกไปให้ได้ก่อน จึงจะมีโอกาสเห็นกำไร"><strong style="color:var(--red-soft)">Year 1 is a loss in all realistic scenarios.</strong> The business needs to survive Year 1 to reach profitability.</li>
+  </ul>
+
+  <h3 data-th="สิ่งที่ยังต้องหาคำตอบ">What we don't know yet</h3>
+  <ul class="checklist">
+    <li data-th="ดีมานด์วันธรรมดาในหัวหิน รองรับราคาของ BAO ได้จริงหรือไม่">Whether Hua Hin weekday demand exists at BAO's price points</li>
+    <li data-th="มีผู้สอนคุณภาพในหัวหินที่ยอมทำงานแบบ <span class=&quot;tip&quot; data-tip=&quot;Instead of paying a fixed salary, BAO splits the class fee with the teacher. The teacher gets 60%, BAO keeps 40%. Less risk for BAO — if nobody comes, nobody pays.&quot; data-tip-th=&quot;แทนที่จะจ่ายเงินเดือนตายตัว BAO แบ่งค่าคลาสกับครูผู้สอน ครูได้ 60% BAO เก็บ 40% ถ้าไม่มีคนมา ก็ไม่ต้องจ่าย&quot;>revenue share</span> หรือไม่">Whether quality facilitators are available on <span class="tip" data-tip="Instead of paying a fixed salary, BAO splits the class fee with the teacher. The teacher gets 60%, BAO keeps 40%. Less risk for BAO — if nobody comes, nobody pays." data-tip-th="แทนที่จะจ่ายเงินเดือนตายตัว BAO แบ่งค่าคลาสกับครูผู้สอน ครูได้ 60% BAO เก็บ 40% ถ้าไม่มีคนมา ก็ไม่ต้องจ่าย">revenue share</span> in Hua Hin</li>
+    <li data-th="คอนเซปต์กิจกรรมอนาล็อกทำให้คนยอมจ่ายเงินจริงได้หรือไม่">Whether the analog activity concept drives real paid engagement</li>
+    <li data-th="ช่องทางแนะนำจากโรงแรมเปลี่ยนมาเป็นลูกค้าจริงได้หรือไม่">Whether hotel referral channels actually convert</li>
+    <li data-th="คู่แข่งกำลังทำอะไรอยู่จริงบ้าง (ตอนนี้ยังไม่มีข้อมูลภาคสนาม)">What competitors are really doing (no field data yet)</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- 8. RECOMMENDATION -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 08">Section 08</div>
+  <h2 data-th="คำแนะนำของเรา: เริ่มจาก Phase 1 ก่อน">Our Recommendation: Phase 1 First</h2>
+
+  <div class="highlight" style="font-size:16px;padding:24px;" data-th="<strong>อย่าลงมือสร้างทั้ง 4 โซนพร้อมกัน</strong>"><strong>Do not build all 4 zones at once.</strong></div>
+
+  <h3 data-th="Phase 1: คาเฟ่ + สตูดิโอ (~4.7 ล้านบาท)">Phase 1: Cafe + Studio (~4.7M)</h3>
+  <ul class="checklist">
+    <li data-th="คาเฟ่ที่มีที่นั่งในอาคารประมาณ 15 ที่ + ที่นั่งกลางแจ้ง">Cafe with ~15 indoor seats + outdoor seating</li>
+    <li data-th="ห้องสตูดิโอ 1 ห้อง (รองรับ 10–12 คน)">One studio room (10–12 capacity)</li>
+    <li data-th="สวนแบบพื้นฐาน (ทางเดิน ที่นั่ง และจัดภูมิทัศน์เบื้องต้น)">Basic garden (paths, seating, simple landscaping)</li>
+    <li data-th="ยังไม่ทำโซน BAO Jai (ให้ทดสอบด้วยป๊อปอัพก่อน)">No BAO Jai zone (test with pop-ups first)</li>
+    <li data-th="ยังไม่ลงทุนโครงสร้างรองรับอีเวนต์ (อาจจัดงานเล็กได้เดือนละ 1 ครั้งถ้าอากาศเอื้อ)">No event infrastructure (1 small event/month if weather allows)</li>
+  </ul>
+
+  <h3 data-th="เงื่อนไขเดินหน้าหรือหยุดก่อนเข้า Phase 2">Go / No-Go Gates for Phase 2</h3>
+  <p data-th="ขยายต่อเมื่อ Phase 1 ทำได้ตามเกณฑ์ต่อเนื่อง <strong>อย่างน้อย 3 เดือนติด:</strong>">Expand only if Phase 1 achieves <strong>for 3+ consecutive months:</strong></p>
+  <ul class="checklist">
+    <li data-th="ลูกค้าคาเฟ่วันธรรมดา &gt; 35 คน/วัน">Weekday cafe covers &gt; 35/day</li>
+    <li data-th="ลูกค้าคาเฟ่วันหยุด &gt; 70 คน/วัน">Weekend cafe covers &gt; 70/day</li>
+    <li data-th="อัตราเต็มคลาสของสตูดิโอ <span class=&quot;tip&quot; data-tip=&quot;How full the class is compared to maximum. If a studio fits 10 people and 7 show up, the fill rate is 70%.&quot; data-tip-th=&quot;คลาสเต็มแค่ไหนเทียบกับจำนวนที่นั่งสูงสุด ถ้าสตูดิโอจุ 10 คน มาจริง 7 คน fill rate คือ 70%&quot;>fill rate</span> &gt; 55%">Studio <span class="tip" data-tip="How full the class is compared to maximum. If a studio fits 10 people and 7 show up, the fill rate is 70%.">fill rate</span> &gt; 55%</li>
+    <li data-th="มีผู้สอนที่ไว้ใจได้อย่างน้อย 3 คนในโมเดล <span class=&quot;tip&quot; data-tip=&quot;Instead of paying a fixed salary, BAO splits the class fee with the teacher. The teacher gets 60%, BAO keeps 40%. Less risk for BAO — if nobody comes, nobody pays.&quot; data-tip-th=&quot;แทนที่จะจ่ายเงินเดือนตายตัว BAO แบ่งค่าคลาสกับครูผู้สอน ครูได้ 60% BAO เก็บ 40% ถ้าไม่มีคนมา ก็ไม่ต้องจ่าย&quot;>revenue share</span>">At least 3 reliable facilitators on <span class="tip" data-tip="Instead of paying a fixed salary, BAO splits the class fee with the teacher. The teacher gets 60%, BAO keeps 40%. Less risk for BAO — if nobody comes, nobody pays.">revenue share</span></li>
+    <li data-th="ยอดใช้จ่ายเฉลี่ยของคาเฟ่ &gt; 170 บาท">Cafe average ticket &gt; 170 THB</li>
+    <li data-th="<span class=&quot;tip&quot; data-tip=&quot;The percentage of customers who come back and book again within a set time. Higher = people liked it enough to return.&quot; data-tip-th=&quot;เปอร์เซ็นต์ลูกค้าที่กลับมาจองอีกครั้งภายในระยะเวลาที่กำหนด ยิ่งสูง = คนชอบพอที่จะกลับมาอีก&quot;>อัตรากลับมาจองซ้ำ</span> &gt; 20% ภายใน 30 วัน"><span class="tip" data-tip="The percentage of customers who come back and book again within a set time. Higher = people liked it enough to return." data-tip-th="เปอร์เซ็นต์ลูกค้าที่กลับมาจองอีกครั้งภายในระยะเวลาที่กำหนด ยิ่งสูง = คนชอบพอที่จะกลับมาอีก">Rebook rate</span> &gt; 20% within 30 days</li>
+  </ul>
+
+  <h3 data-th="Phase 2: เพิ่มโซน (เดือน 12–18 หาก Phase 1 พิสูจน์แล้วว่าไปต่อได้)">Phase 2: Add zones (months 12–18, if Phase 1 proves out)</h3>
+  <ul class="checklist">
+    <li data-th="โซนกิจกรรม BAO Jai (กลางแจ้ง/มีหลังคา)">BAO Jai activity zone (outdoor/covered)</li>
+    <li data-th="พัฒนาสวนให้รองรับอีเวนต์ได้ดีขึ้น">Enhanced garden for events</li>
+    <li data-th="ตารางคลาสที่หลากหลายขึ้น">Broader class schedule</li>
+    <li data-th="ลงทุนเพิ่มอีกประมาณ 2–3 ล้านบาท">~2–3M additional investment</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- 9. BEFORE SPENDING -->
+<div class="section">
+  <div class="section-number" data-th="ส่วนที่ 09">Section 09</div>
+  <h2 data-th="สิ่งที่ควรทำก่อนลงเงินจริง">What To Do Before Spending Any Money</h2>
+
+  <p data-th="งบสำหรับการทดสอบทั้งหมด: <strong>50,000–80,000 บาท ภายใน 8–10 สัปดาห์</strong>">Total validation budget: <strong>50–80K THB over 8–10 weeks.</strong></p>
+
+  <ol class="steps">
+    <li data-th="<strong>จัดป๊อปอัพแบบเก็บเงินจริง</strong> (2–3 สุดสัปดาห์) &mdash; เพื่อดูว่าคนยอมจ่ายสำหรับคลาสและกิจกรรมจริงหรือไม่"><strong>Run paid pop-ups</strong> (2–3 weekends) &mdash; test if people actually pay for sessions and activities</li>
+    <li data-th="<strong>คุยกับผู้สอนอย่างน้อย 5 คน</strong> &mdash; เพื่อยืนยันว่าฝั่งซัพพลายของโมเดลสตูดิโอมีอยู่จริงในหัวหิน"><strong>Talk to 5+ facilitators</strong> &mdash; confirm the supply side of the studio model exists in Hua Hin</li>
+    <li data-th="<strong>รันโฆษณาทดสอบดีมานด์</strong> (10,000–15,000 บาท) &mdash; เพื่อวัดความสนใจจริงของคนกรุงเทพที่มาเที่ยวสุดสัปดาห์"><strong>Run demand-test ads</strong> (10–15K THB) &mdash; measure real interest from Bangkok weekenders</li>
+    <li data-th="<strong>ไปดูคู่แข่งแบบลูกค้าจริง</strong> &mdash; เยี่ยม House of KOON และอีก 5–8 แห่ง ทั้งวันธรรมดาและวันหยุด"><strong>Mystery-shop competitors</strong> &mdash; visit House of KOON and 5–8 other spaces, weekdays AND weekends</li>
+    <li data-th="<strong>คุยกับ concierge ของโรงแรม</strong> &mdash; เพื่อดูว่าช่องทางแนะนำลูกค้ามีอยู่จริงหรือไม่"><strong>Talk to hotel concierges</strong> &mdash; test whether the referral channel is real</li>
+    <li data-th="<strong>ขอใบเสนอราคาผู้รับเหมา 3 ราย</strong> &mdash; เพื่อเช็กต้นทุนก่อสร้างก่อนตัดสินใจ"><strong>Get 3 contractor bids</strong> &mdash; validate buildout costs before committing</li>
+    <li data-th="<strong>สัมภาษณ์ลูกค้าที่เป็นไปได้ 15–20 คน</strong> &mdash; ที่คาเฟ่ในหัวหิน เพื่อถามว่าตลาดยังขาดอะไร"><strong>Interview 15–20 potential customers</strong> &mdash; at Hua Hin cafes, ask what's missing</li>
+  </ol>
+
+  <div class="highlight" data-th="<strong>ถ้าผลทดสอบออกมาดี:</strong> การลงทุน Phase 1 ที่ 4.7 ล้านถือว่าเสี่ยงอย่างมีเหตุผล<br>
+    <strong>ถ้าผลออกมากลาง ๆ:</strong> ควรปรับแบบและทบทวนก่อนสร้าง<br>
+    <strong>ถ้าผลออกมาแย่:</strong> ที่ดินยังคงว่างอยู่เหมือนเดิม และสิ่งที่เสียไปมีเพียงงบทดสอบ ไม่ใช่เงินก่อสร้าง 5–8 ล้าน">
+    <strong>If validation is positive:</strong> Phase 1 is a reasonable bet at 4.7M.<br>
+    <strong>If validation is mixed:</strong> Redesign before building.<br>
+    <strong>If validation is negative:</strong> The land stays idle and you've lost only the validation budget &mdash; not 5–8M on a building.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer" data-th="รายงานนี้เป็นผลงานวิเคราะห์ร่วมของ Claude (Opus 4.6) และ Codex (GPT-5.4)<br>
+  ผ่านการตรวจสอบโต้แย้งกัน 2 รอบ ตัวเลขทั้งหมดเป็นเพียงประมาณการก่อนพิสูจน์จริง<br>
+  ควรแทนที่ด้วยใบเสนอราคาจริง ผลการทดลองป๊อปอัพ และข้อมูลภาคสนาม<br>
+  ก่อนตัดสินใจลงทุนก้อนใหญ่<br><br>
+  <span style=&quot;color:var(--brown)&quot;>มาอย่างที่เป็น กลับไปอย่างเบาสบาย</span>">
+  This report reflects the combined analysis of Claude (Opus 4.6) &amp; Codex (GPT-5.4),<br>
+  reviewed through 2 adversarial rounds. All assumptions are pre-validation estimates.<br>
+  Real contractor bids, pop-up results, and field research should replace<br>
+  placeholder numbers before any capital commitment.<br><br>
+  <span style="color:var(--brown)">Come however you are. Leave a little lighter.</span>
+</div>
+
+
+</div><!-- .page -->
+</body>
+</html>
